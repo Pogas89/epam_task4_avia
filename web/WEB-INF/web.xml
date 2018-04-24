@@ -15,6 +15,16 @@
         <url-pattern>/admin/userlist.html</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>StaffListController</servlet-name>
+        <servlet-class>by.epam.ivanov.aviacompany.controller.StaffListController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StaffListController</servlet-name>
+        <url-pattern>/admin/stafflist.html</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>by.epam.ivanov.aviacompany.util.Log4jInit</listener-class>
     </listener>

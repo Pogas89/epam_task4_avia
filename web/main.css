@@ -1,0 +1,37 @@
+form button {
+    height: 56px;
+    line-height: 56px;
+    margin: 52px 5px 0 0;
+    padding: 0 5px 0 52px;
+}
+
+a.edit {
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    background: url('edit.png');
+}
+
+a.add {
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    background: url('add.png');
+}
+
+form button.save {
+    background: #0C4 url('save.png') no-repeat;
+}
+
+form button.add {
+    background: #0C4 url('add.png') no-repeat;
+}
+
+form button.delete {
+    background: #0C4 url('delete.png') no-repeat;
+}
+
+form button.edit {
+    background: #0C4 url('edit.png') no-repeat;
+}
+

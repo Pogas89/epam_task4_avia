@@ -13,5 +13,6 @@
   </head>
   <body>
   <p><a href="admin/userlist.html">user list</a> </p>
+  <p><a href="admin/stafflist.html">staff list</a> </p>
   </body>
 </html>
