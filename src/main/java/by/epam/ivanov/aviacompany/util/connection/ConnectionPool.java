@@ -2,35 +2,51 @@ package by.epam.ivanov.aviacompany.util.connection;
 
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Properties;
 
 public class ConnectionPool {
     private static Logger LOGGER = Logger.getLogger(ConnectionPool.class);
-
+    private static volatile ConnectionPool instance = null;
     private int maxPool;
     private String url;
     private String user;
     private String password;
     private List<PooledConnection> free, used;
 
-    private ConnectionPool() {
-    }
-
-    public ConnectionPool(int maxPool, String driver, String url, String user, String password) throws SQLException, ClassNotFoundException {
-        Class.forName(driver);
-        this.maxPool = maxPool;
-        this.url = url;
-        this.user = user;
-        this.password = password;
+    private ConnectionPool() throws SQLException, ClassNotFoundException {
+        Properties properties = new Properties();
+        try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream
+                    ("connection.properties")){
+            properties.load(inputStream);
+//            Class.forName(properties.getProperty("driver"));
+            this.maxPool = Integer.parseInt(properties.getProperty("maxPool"));
+            this.url = properties.getProperty("url");
+            this.user = properties.getProperty("user");
+            this.password = properties.getProperty("password");
+        } catch (IOException e) {
+            LOGGER.error("can not load properties for connection");
+        }
 
         free = Collections.synchronizedList(new ArrayList<PooledConnection>(maxPool));
-        free.add(createConnectionWrapper());
+        for (int i = 0; i < 4; i++) {
+            free.add(createConnectionWrapper());
+        }
         used = Collections.synchronizedList(new ArrayList<PooledConnection>(maxPool));
+    }
+
+    public static ConnectionPool getInstance() throws SQLException, ClassNotFoundException {
+        if(instance==null){
+            instance = new ConnectionPool();
+        }
+        return instance;
     }
 
     @Override
@@ -38,7 +54,7 @@ public class ConnectionPool {
         destroy();
     }
 
-    public synchronized void destroy() {
+    private synchronized void destroy() {
         for (PooledConnection connection : free) {
             try {
                 connection.getRawConnection().close();
@@ -70,7 +86,7 @@ public class ConnectionPool {
         return connection;
     }
 
-    public PooledConnection createConnectionWrapper() throws SQLException {
+    private PooledConnection createConnectionWrapper() throws SQLException {
         Connection connection = null;
         PooledConnection pooledConnection = null;
 

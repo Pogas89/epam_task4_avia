@@ -4,7 +4,7 @@ import by.epam.ivanov.aviacompany.dao.mysql.MySqlUserDAO;
 import by.epam.ivanov.aviacompany.entity.User;
 import by.epam.ivanov.aviacompany.service.ServiceException;
 import by.epam.ivanov.aviacompany.service.logic.UserServiceImpl;
-import by.epam.ivanov.aviacompany.util.connection.Connector;
+import by.epam.ivanov.aviacompany.util.connection.ConnectionPool;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -18,12 +18,13 @@ import java.util.List;
 
 public class UserListController extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(UserListController.class);
+    ConnectionPool pool;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection = null;
         try {
-            connection = Connector.getConnection();
+            connection = pool.getConnection();
             MySqlUserDAO userDAO = new MySqlUserDAO();
             userDAO.setConnection(connection);
             UserServiceImpl userService = new UserServiceImpl();
@@ -45,17 +46,8 @@ public class UserListController extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        String url = "jdbc:mysql://localhost:3306/aviacompany" +
-                "?verifyServerCertificate=false" +
-                "&useSSL=false" +
-                "&requireSSL=false" +
-                "&useLegacyDatetimeCode=false" +
-                "&amp" +
-                "&serverTimezone=UTC";
         try {
-            Connector.init(10, "com.mysql.jdbc.Driver", url,
-                    "root", "110989");
-            LOGGER.debug("Controller pool has been init");
+            pool=ConnectionPool.getInstance();
         } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException(e);
         }
