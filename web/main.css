@@ -1,21 +1,21 @@
 form button {
-    height: 56px;
-    line-height: 56px;
-    margin: 52px 5px 0 0;
-    padding: 0 5px 0 52px;
+    height: 29px;
+    line-height: 29px;
+    margin: 29px 5px 0 0;
+    padding: 0 5px 0 29px;
 }
 
 a.edit {
     display: inline-block;
-    width: 52px;
-    height: 52px;
+    width: 27px;
+    height: 27px;
     background: url('edit.png');
 }
 
 a.add {
     display: inline-block;
-    width: 52px;
-    height: 52px;
+    width: 27px;
+    height: 27px;
     background: url('add.png');
 }
 
