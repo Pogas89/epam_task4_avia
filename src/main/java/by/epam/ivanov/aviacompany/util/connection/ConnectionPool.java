@@ -26,7 +26,7 @@ public class ConnectionPool {
         try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream
                     ("connection.properties")){
             properties.load(inputStream);
-//            Class.forName(properties.getProperty("driver"));
+            Class.forName(properties.getProperty("driver"));
             this.maxPool = Integer.parseInt(properties.getProperty("maxPool"));
             this.url = properties.getProperty("url");
             this.user = properties.getProperty("user");
