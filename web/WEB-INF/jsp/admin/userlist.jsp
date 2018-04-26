@@ -41,6 +41,6 @@
         </tr>
     </c:forEach>
 </table>
-<a href="/admin/useradd.html" class="add"></a>
+<a href="/admin/useredit.html" class="add"></a>
 </body>
 </html>

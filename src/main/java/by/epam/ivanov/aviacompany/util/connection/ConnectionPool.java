@@ -105,7 +105,7 @@ public class ConnectionPool {
         return pooledConnection;
     }
 
-    public void freeConnectionWrapper(PooledConnection connection) {
+    void freeConnectionWrapper(PooledConnection connection) {
         used.remove(connection);
         free.add(connection);
     }

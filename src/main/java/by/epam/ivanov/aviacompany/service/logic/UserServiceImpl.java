@@ -48,10 +48,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void add(User user) throws ServiceException {
+    public void save(User user) throws ServiceException {
         try {
-            Integer id = userDAO.create(user);
-            user.setId(id);
+            if (user.getId()==null) {
+                Integer id = userDAO.create(user);
+                user.setId(id);
+            } else {
+                userDAO.update(user);
+            }
         } catch (DaoException e) {
             LOGGER.error(e.getMessage());
             throw new ServiceException(e);

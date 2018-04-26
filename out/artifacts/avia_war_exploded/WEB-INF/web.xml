@@ -16,6 +16,26 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>UserEditController</servlet-name>
+        <servlet-class>by.epam.ivanov.aviacompany.controller.UserEditController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserEditController</servlet-name>
+        <url-pattern>/admin/useredit.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserSaveController</servlet-name>
+        <servlet-class>by.epam.ivanov.aviacompany.controller.UserSaveController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserSaveController</servlet-name>
+        <url-pattern>/admin/usersave.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>StaffListController</servlet-name>
         <servlet-class>by.epam.ivanov.aviacompany.controller.StaffListController</servlet-class>
     </servlet>

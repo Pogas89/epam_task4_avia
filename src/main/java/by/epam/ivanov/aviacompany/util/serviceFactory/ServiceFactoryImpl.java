@@ -11,6 +11,7 @@ import by.epam.ivanov.aviacompany.service.logic.UserServiceImpl;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 //    private Logger LOGGER = Logger.getLogger(ServiceFactoryImpl.class);

@@ -1,6 +1,21 @@
 package by.epam.ivanov.aviacompany.entity;
 
 public enum UserRole {
-    ADMIN, DISPETCHER
+    ADMIN("Admin"),
+    DISPETCHER("Dispetcher");
+
+    private String name;
+
+    private UserRole(String name){
+        this.name = name;
+    }
+
+    public Integer getId(){
+        return Integer.valueOf(ordinal());
+    }
+
+    public String getName() {
+        return name;
+    }
 }
 
