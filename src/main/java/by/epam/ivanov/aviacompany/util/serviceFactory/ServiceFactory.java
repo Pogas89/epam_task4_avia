@@ -7,7 +7,7 @@ import by.epam.ivanov.aviacompany.service.UserService;
 
 import java.sql.Connection;
 
-public interface ServiceFactory {
+public interface ServiceFactory extends AutoCloseable {
     UserService getUserService() throws ServiceFactoryException;
 
     StaffService getStaffService() throws ServiceFactoryException;

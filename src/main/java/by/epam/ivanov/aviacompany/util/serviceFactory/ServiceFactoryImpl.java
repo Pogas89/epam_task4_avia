@@ -49,4 +49,9 @@ public class ServiceFactoryImpl implements ServiceFactory {
     public Connection getConnection() throws ServiceFactoryException {
         return null;
     }
+
+    @Override
+    public void close() throws Exception {
+        connection.close();
+    }
 }
