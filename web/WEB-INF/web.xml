@@ -4,45 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
          metadata-complete="true">
-
+    
     <servlet>
-        <servlet-name>UserListController</servlet-name>
-        <servlet-class>by.epam.ivanov.aviacompany.controller.UserListController</servlet-class>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>by.epam.ivanov.aviacompany.controller.Controller</servlet-class>
     </servlet>
-
+    
     <servlet-mapping>
-        <servlet-name>UserListController</servlet-name>
-        <url-pattern>/admin/userlist.html</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UserEditController</servlet-name>
-        <servlet-class>by.epam.ivanov.aviacompany.controller.UserEditController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>UserEditController</servlet-name>
-        <url-pattern>/admin/useredit.html</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UserSaveController</servlet-name>
-        <servlet-class>by.epam.ivanov.aviacompany.controller.UserSaveController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>UserSaveController</servlet-name>
-        <url-pattern>/admin/usersave.html</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>StaffListController</servlet-name>
-        <servlet-class>by.epam.ivanov.aviacompany.controller.StaffListController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>StaffListController</servlet-name>
-        <url-pattern>/admin/stafflist.html</url-pattern>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>*.html</url-pattern>
     </servlet-mapping>
 
     <listener>

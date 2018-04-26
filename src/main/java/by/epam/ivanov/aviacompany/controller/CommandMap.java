@@ -9,7 +9,7 @@ public class CommandMap {
     private static HashMap<String, Command> commandMap = new HashMap<>();
 
     static {
-        commandMap.put("/admin/userlist.html", new UserListCommand());
+        commandMap.put("userlist", new UserListCommand());
 
         //todo: дописать остальные команды
     }

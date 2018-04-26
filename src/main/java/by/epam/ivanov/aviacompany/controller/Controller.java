@@ -18,8 +18,10 @@ public class Controller extends HttpServlet {
     ConnectionPool pool;
 
     private void procces(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nameOfCommand = req.getParameter("command");
-        Command command = CommandMap.getCommand(nameOfCommand);
+        String url = req.getRequestURI();
+        String context = req.getContextPath();
+        url = url.substring(context.length(), url.lastIndexOf(".html"));
+        Command command = CommandMap.getCommand(url);
 
         String page = Pages.ERROR_PAGE;
         try (ServiceFactory factory = getServiceFactory()) {
