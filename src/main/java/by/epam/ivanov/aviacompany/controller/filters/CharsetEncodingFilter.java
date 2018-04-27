@@ -24,7 +24,7 @@ public class CharsetEncodingFilter implements Filter {
             servletRequest.setCharacterEncoding(encoding);
         }
 
-        LOGGER.debug("Filter finished");
+        LOGGER.debug("Filter finished with encoding - " + encoding);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

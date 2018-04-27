@@ -1,26 +1,23 @@
 package by.epam.ivanov.aviacompany.controller.userCommands;
 
 import by.epam.ivanov.aviacompany.controller.Command;
-import by.epam.ivanov.aviacompany.controller.Forward;
 import by.epam.ivanov.aviacompany.entity.User;
 import by.epam.ivanov.aviacompany.entity.UserRole;
 import by.epam.ivanov.aviacompany.service.ServiceException;
 import by.epam.ivanov.aviacompany.service.UserService;
 import by.epam.ivanov.aviacompany.util.Commands;
-import by.epam.ivanov.aviacompany.util.Pages;
 import by.epam.ivanov.aviacompany.util.serviceFactory.ServiceFactoryException;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class UserSaveCommand extends Command {
     private Logger LOGGER = Logger.getLogger(UserSaveCommand.class);
 
     @Override
-    public Forward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         User user = new User();
         try {
             user.setId(Integer.parseInt(request.getParameter("id")));
@@ -44,6 +41,6 @@ public class UserSaveCommand extends Command {
                 throw new ServletException(e);
             }
         }
-        return new Forward(Commands.USERLIST_COMMAND, true);
+        return Commands.USERLIST_COMMAND;
     }
 }

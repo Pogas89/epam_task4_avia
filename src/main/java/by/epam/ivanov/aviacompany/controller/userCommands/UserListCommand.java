@@ -1,7 +1,6 @@
 package by.epam.ivanov.aviacompany.controller.userCommands;
 
 import by.epam.ivanov.aviacompany.controller.Command;
-import by.epam.ivanov.aviacompany.controller.Forward;
 import by.epam.ivanov.aviacompany.entity.User;
 import by.epam.ivanov.aviacompany.service.ServiceException;
 import by.epam.ivanov.aviacompany.service.UserService;
@@ -18,12 +17,12 @@ public class UserListCommand extends Command {
     private static final Logger LOGGER = Logger.getLogger(UserListCommand.class);
 
     @Override
-    public Forward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try{
             UserService userService = getServiceFactory().getUserService();
             List<User> userList = userService.readUsers();
             request.setAttribute("userList", userList);
-            return new Forward(Pages.USERLIST_PAGE, false);
+            return Pages.USERLIST_PAGE;
         } catch (ServiceException | ServiceFactoryException e) {
             LOGGER.error(e.getMessage());
             throw new ServletException(e);

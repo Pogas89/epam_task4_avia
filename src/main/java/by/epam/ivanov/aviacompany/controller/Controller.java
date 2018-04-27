@@ -23,7 +23,7 @@ public class Controller extends HttpServlet {
         Command command = CommandMap.getCommand(url);
         LOGGER.debug("Controller has command " + url);
 
-        Forward page;
+        String page;
         try (ServiceFactory factory = getServiceFactory()) {
             LOGGER.debug("Controller has ServiceFactory" + factory);
             command.setServiceFactory(factory);
@@ -32,14 +32,14 @@ public class Controller extends HttpServlet {
             LOGGER.error(e.getMessage());
             throw new ServletException(e);
         }
-        if (page.isRedirect()) {
-            LOGGER.debug("controller redirect " + page.getPage());
-            resp.sendRedirect(page.getPage());
-        } else {
-            LOGGER.debug("controller get RD" + page.getPage());
-            req.getRequestDispatcher(page.getPage()).forward(req, resp);
-        }
-        LOGGER.debug("Controller end with page" + page.getPage());
+//        if (page.isRedirect()) {
+//            LOGGER.debug("controller redirect --------------------->" + page.getPage());
+//            resp.sendRedirect(page.getPage());
+//        } else {
+            LOGGER.debug("controller get RD" + page);
+            req.getRequestDispatcher(page).forward(req, resp);
+//        }
+        LOGGER.debug("Controller end with page" + page);
     }
 
     public ServiceFactory getServiceFactory() {

@@ -1,7 +1,6 @@
 package by.epam.ivanov.aviacompany.controller.userCommands;
 
 import by.epam.ivanov.aviacompany.controller.Command;
-import by.epam.ivanov.aviacompany.controller.Forward;
 import by.epam.ivanov.aviacompany.entity.User;
 import by.epam.ivanov.aviacompany.entity.UserRole;
 import by.epam.ivanov.aviacompany.service.ServiceException;
@@ -18,7 +17,7 @@ public class UserEditCommand extends Command {
     Logger LOGGER = Logger.getLogger(UserEditCommand.class);
 
     @Override
-    public Forward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         LOGGER.debug("userEdit command start");
         Integer id = null;
         try {
@@ -38,6 +37,6 @@ public class UserEditCommand extends Command {
         }
         request.setAttribute("userRoles", UserRole.values());
         LOGGER.debug("userEdit command end with" + Pages.USEREDIT_PAGE);
-        return new Forward(Pages.USEREDIT_PAGE, false);
+        return Pages.USEREDIT_PAGE;
     }
 }
