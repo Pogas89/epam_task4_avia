@@ -18,7 +18,7 @@
     <listener>
         <listener-class>by.epam.ivanov.aviacompany.util.Log4jInit</listener-class>
     </listener>
-    
+
     <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>by.epam.ivanov.aviacompany.controller.filters.CharsetEncodingFilter</filter-class>
@@ -30,7 +30,9 @@
 
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
-        <url-pattern>*</url-pattern>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
 </web-app>
