@@ -20,6 +20,6 @@ public abstract class Command {
         this.serviceFactory = serviceFactory;
     }
 
-    public abstract String execute(HttpServletRequest request, HttpServletResponse response)
+    public abstract Forward execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException;
 }

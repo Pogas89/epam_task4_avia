@@ -1,11 +1,14 @@
 package by.epam.ivanov.aviacompany.util.connection;
 
+import org.apache.log4j.Logger;
+
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
 public class PooledConnection implements Connection {
+    private Logger LOGGER = Logger.getLogger(PooledConnection.class);
     private ConnectionPool pool;
     private Connection connection;
 
@@ -40,6 +43,7 @@ public class PooledConnection implements Connection {
 
     @Override
     public void close() throws SQLException {
+        LOGGER.debug("close connection" + connection);
         pool.freeConnectionWrapper(this);
     }
 

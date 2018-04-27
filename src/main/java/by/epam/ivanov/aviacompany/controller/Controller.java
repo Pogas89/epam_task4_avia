@@ -18,19 +18,28 @@ public class Controller extends HttpServlet {
     ConnectionPool pool;
 
     private void procces(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOGGER.debug("Controller starts");
         String url = req.getRequestURI();
-        String context = req.getContextPath();
-        url = url.substring(context.length(), url.lastIndexOf(".html"));
         Command command = CommandMap.getCommand(url);
+        LOGGER.debug("Controller has command " + url);
 
-        String page = Pages.ERROR_PAGE;
+        Forward page;
         try (ServiceFactory factory = getServiceFactory()) {
+            LOGGER.debug("Controller has ServiceFactory" + factory);
             command.setServiceFactory(factory);
             page = command.execute(req, resp);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
+            throw new ServletException(e);
         }
-        req.getRequestDispatcher(page).forward(req, resp);
+        if (page.isRedirect()) {
+            LOGGER.debug("controller redirect " + page.getPage());
+            resp.sendRedirect(page.getPage());
+        } else {
+            LOGGER.debug("controller get RD" + page.getPage());
+            req.getRequestDispatcher(page.getPage()).forward(req, resp);
+        }
+        LOGGER.debug("Controller end with page" + page.getPage());
     }
 
     public ServiceFactory getServiceFactory() {
@@ -39,8 +48,10 @@ public class Controller extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
+        LOGGER.debug("Contrroller start init");
         try {
             pool=ConnectionPool.getInstance();
+            LOGGER.debug("Contrroller end init");
         } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException(e);
         }
@@ -52,7 +63,7 @@ public class Controller extends HttpServlet {
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         procces(req, resp);
     }
 }

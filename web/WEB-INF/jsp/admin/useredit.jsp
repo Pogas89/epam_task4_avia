@@ -24,15 +24,15 @@
         <input name="id" value="${user.id}" type="hidden">
     </c:if>
     <label for="login">Login:</label>
-    <input type="text" name="login" id="${user.login}">
+    <input type="text" name="login" id="${user.login}" value="${user.login}" required>
     <label for="password">password:</label>
-    <input type="password" name="password" id="${user.password}">
+    <input type="password" name="password" id="${user.password}" value="${user.password}" required>
     <label for="firstName">Firstname:</label>
-    <input type="text" name="firstName" id="${user.firstName}">
+    <input type="text" name="firstName" id="${user.firstName}" value="${user.firstName}" required>
     <label for="lastName">Lastname:</label>
-    <input type="text" name="lastName" id="${user.lastName}">
+    <input type="text" name="lastName" id="${user.lastName}" value="${user.lastName}" required>
     <label for="email">Email:</label>
-    <input type="email" name="email" id="${user.email}">
+    <input type="email" name="email" id="${user.email}" value="${user.email}" required>
     <label for="userRole">Role</label>
     <select id="userRole" name="userRole">
         <c:forEach var="userRole" items="${userRoles}">

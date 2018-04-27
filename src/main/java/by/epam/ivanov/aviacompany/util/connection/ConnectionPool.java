@@ -37,6 +37,7 @@ public class ConnectionPool {
 
         free = Collections.synchronizedList(new ArrayList<PooledConnection>(maxPool));
         for (int i = 0; i < 4; i++) {
+            LOGGER.debug("add connection " + i + ":");
             free.add(createConnectionWrapper());
         }
         used = Collections.synchronizedList(new ArrayList<PooledConnection>(maxPool));
@@ -102,10 +103,13 @@ public class ConnectionPool {
                 throw e;
             }
         }
+        LOGGER.debug(connection);
+        LOGGER.debug(pooledConnection);
         return pooledConnection;
     }
 
     void freeConnectionWrapper(PooledConnection connection) {
+        LOGGER.debug("free connection " + connection);
         used.remove(connection);
         free.add(connection);
     }

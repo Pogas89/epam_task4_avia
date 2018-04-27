@@ -8,13 +8,15 @@ import by.epam.ivanov.aviacompany.service.StaffService;
 import by.epam.ivanov.aviacompany.service.UserService;
 import by.epam.ivanov.aviacompany.service.logic.StaffServiceImpl;
 import by.epam.ivanov.aviacompany.service.logic.UserServiceImpl;
+import by.epam.ivanov.aviacompany.util.connection.ConnectionPool;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ServiceFactoryImpl implements ServiceFactory {
-//    private Logger LOGGER = Logger.getLogger(ServiceFactoryImpl.class);
+    private Logger LOGGER = Logger.getLogger(ServiceFactoryImpl.class);
+    ConnectionPool pool;
     Connection connection;
 
     @Override
@@ -47,11 +49,22 @@ public class ServiceFactoryImpl implements ServiceFactory {
 
     @Override
     public Connection getConnection() throws ServiceFactoryException {
-        return null;
+        try {
+            pool = ConnectionPool.getInstance();
+            connection = pool.getConnection();
+            LOGGER.debug("getConnection " + connection);
+        } catch (SQLException | ClassNotFoundException e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return connection;
     }
 
     @Override
     public void close() throws Exception {
-        connection.close();
+        if (connection!=null) {
+            LOGGER.debug("Closing connection" + connection);
+            connection.close();
+        }
     }
 }
