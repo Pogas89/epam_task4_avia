@@ -14,16 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UserEditCommand extends Command {
-    Logger LOGGER = Logger.getLogger(UserEditCommand.class);
+    private Logger LOGGER = Logger.getLogger(UserEditCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         LOGGER.debug("userEdit command start");
-        Integer id = null;
+        Integer id;
         try {
             id = Integer.parseInt(request.getParameter("id"));
             LOGGER.debug("id=" + id);
         } catch (NumberFormatException e) {
+            throw new ServletException(e);
         }
         if (id != null) {
             try {

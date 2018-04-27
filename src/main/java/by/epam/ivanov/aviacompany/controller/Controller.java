@@ -1,6 +1,5 @@
 package by.epam.ivanov.aviacompany.controller;
 
-import by.epam.ivanov.aviacompany.util.Pages;
 import by.epam.ivanov.aviacompany.util.connection.ConnectionPool;
 import by.epam.ivanov.aviacompany.util.serviceFactory.ServiceFactory;
 import by.epam.ivanov.aviacompany.util.serviceFactory.ServiceFactoryImpl;
@@ -13,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static by.epam.ivanov.aviacompany.util.Pages.ERROR_PAGE;
+
 public class Controller extends HttpServlet {
     private static Logger LOGGER = Logger.getLogger(Controller.class);
-    ConnectionPool pool;
+    private ConnectionPool pool;
 
     private void procces(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.debug("Controller starts");
@@ -23,26 +24,24 @@ public class Controller extends HttpServlet {
         Command command = CommandMap.getCommand(url);
         LOGGER.debug("Controller has command " + url);
 
-        String page;
-        try (ServiceFactory factory = getServiceFactory()) {
-            LOGGER.debug("Controller has ServiceFactory" + factory);
-            command.setServiceFactory(factory);
-            page = command.execute(req, resp);
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-            throw new ServletException(e);
+        String page = ERROR_PAGE;
+        if (command!=null) {
+            try (ServiceFactory factory = getServiceFactory()) {
+                LOGGER.debug("Controller has ServiceFactory" + factory);
+                command.setServiceFactory(factory);
+                page = command.execute(req, resp);
+            } catch (Exception e) {
+                LOGGER.error(e.getMessage());
+                throw new ServletException(e);
+            }
         }
-//        if (page.isRedirect()) {
-//            LOGGER.debug("controller redirect --------------------->" + page.getPage());
-//            resp.sendRedirect(page.getPage());
-//        } else {
-            LOGGER.debug("controller get RD" + page);
-            req.getRequestDispatcher(page).forward(req, resp);
-//        }
+
+        LOGGER.debug("controller get RD" + page);
+        req.getRequestDispatcher(page).forward(req, resp);
         LOGGER.debug("Controller end with page" + page);
     }
 
-    public ServiceFactory getServiceFactory() {
+    private ServiceFactory getServiceFactory() {
         return new ServiceFactoryImpl();
     }
 
@@ -50,7 +49,7 @@ public class Controller extends HttpServlet {
     public void init() throws ServletException {
         LOGGER.debug("Contrroller start init");
         try {
-            pool=ConnectionPool.getInstance();
+            pool = ConnectionPool.getInstance();
             LOGGER.debug("Contrroller end init");
         } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException(e);

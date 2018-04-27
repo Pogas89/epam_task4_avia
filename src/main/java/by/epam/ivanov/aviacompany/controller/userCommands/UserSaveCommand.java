@@ -22,6 +22,7 @@ public class UserSaveCommand extends Command {
         try {
             user.setId(Integer.parseInt(request.getParameter("id")));
         } catch (NumberFormatException e) {
+            throw new ServletException(e);
         }
         user.setLogin(request.getParameter("login"));
         user.setPassword(request.getParameter("password"));
@@ -31,6 +32,7 @@ public class UserSaveCommand extends Command {
         try {
             user.setUserRole(UserRole.values()[Integer.parseInt(request.getParameter("userRole"))]);
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            throw new ServletException(e);
         }
         if (user.getLogin() != null && user.getUserRole() != null){
             try {
