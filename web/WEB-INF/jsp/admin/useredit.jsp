@@ -23,16 +23,16 @@
     <c:if test="${not empty user.id}">
         <input name="id" value="${user.id}" type="hidden">
     </c:if>
-    <label for="login">Login:</label>
-    <input type="text" name="login" id="${user.login}" value="${user.login}" required>
-    <label for="password">password:</label>
-    <input type="password" name="password" id="${user.password}" value="${user.password}" required>
-    <label for="firstName">Firstname:</label>
-    <input type="text" name="firstName" id="${user.firstName}" value="${user.firstName}" required>
-    <label for="lastName">Lastname:</label>
-    <input type="text" name="lastName" id="${user.lastName}" value="${user.lastName}" required>
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="${user.email}" value="${user.email}" required>
+    <label>Login:</label>
+    <input type="text" name="login" id="${user.login}" value="${user.login}" required><br>
+    <label>password:</label>
+    <input type="password" name="password" id="${user.password}" value="${user.password}" required><br>
+    <label>Firstname:</label>
+    <input type="text" name="firstName" id="${user.firstName}" value="${user.firstName}" required><br>
+    <label>Lastname:</label>
+    <input type="text" name="lastName" id="${user.lastName}" value="${user.lastName}" required><br>
+    <label>Email:</label>
+    <input type="email" name="email" id="${user.email}" value=" ${user.email}" required><br>
     <label for="userRole">Role</label>
     <select id="userRole" name="userRole">
         <c:forEach var="userRole" items="${userRoles}">
@@ -46,7 +46,7 @@
             </c:choose>
             <option value="${userRole.id}" ${selected}>${userRole.name}</option>
         </c:forEach>
-    </select>
+    </select><br>
     <button class="save">Save</button>
 </form>
 </body>

@@ -19,12 +19,11 @@ public class UserEditCommand extends Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         LOGGER.debug("userEdit command start");
-        Integer id;
+        Integer id = null;
         try {
             id = Integer.parseInt(request.getParameter("id"));
             LOGGER.debug("id=" + id);
         } catch (NumberFormatException e) {
-            throw new ServletException(e);
         }
         if (id != null) {
             try {

@@ -25,7 +25,7 @@ public class Controller extends HttpServlet {
         LOGGER.debug("Controller has command " + url);
 
         String page = ERROR_PAGE;
-        if (command!=null) {
+        if (command != null) {
             try (ServiceFactory factory = getServiceFactory()) {
                 LOGGER.debug("Controller has ServiceFactory" + factory);
                 command.setServiceFactory(factory);

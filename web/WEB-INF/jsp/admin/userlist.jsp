@@ -23,7 +23,8 @@
         <th>Surname</th>
         <th>Email</th>
         <th>Role</th>
-        <td>&nbsp;</td>
+        <td>Edit</td>
+        <td>Delete</td>
     </tr>
     <c:forEach var="user" items="${userList}">
         <tr>
@@ -32,11 +33,17 @@
             <td>${user.lastName}</td>
             <td>${user.email}</td>
             <td>${user.userRole}</td>
-            <td class="empty">
+            <td>
                 <c:url var="userEdit" value="/admin/useredit.html">
                     <c:param name="id" value="${user.id}"/>
                 </c:url>
-                <a href="${userEdit}" class="edit"/>
+                <a href="${userEdit}" class="edit"></a>
+            </td>
+            <td>
+                <c:url var="userDelete" value="/admin/userdelete.html">
+                    <c:param name="id" value="${user.id}"/>
+                </c:url>
+                <a href="${userDelete}" class="delete"></a>
             </td>
         </tr>
     </c:forEach>

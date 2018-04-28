@@ -22,7 +22,6 @@ public class UserSaveCommand extends Command {
         try {
             user.setId(Integer.parseInt(request.getParameter("id")));
         } catch (NumberFormatException e) {
-            throw new ServletException(e);
         }
         user.setLogin(request.getParameter("login"));
         user.setPassword(request.getParameter("password"));
