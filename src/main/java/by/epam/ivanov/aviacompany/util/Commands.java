@@ -9,6 +9,7 @@ public class Commands {
     public static final String STAFFSAVE_COMMAND = "/admin/staffsave.html";
     public static final String STAFFEDIT_COMMAND = "/admin/staffedit.html";
     public static final String STAFFDELETE_COMMAND = "/admin/staffdelete.html";
+    public static final String LOGIN_COMMAND = "/login.html";
 
 
 }
