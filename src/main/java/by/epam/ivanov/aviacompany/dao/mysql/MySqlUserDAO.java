@@ -78,7 +78,6 @@ public class MySqlUserDAO extends MySqlBaseDAO implements UserDAO {
             while (resultSet.next()) {
                 user = getUserFromDB(resultSet);
                 users.add(user);
-                LOGGER.debug("get user = " + user.getId());
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
