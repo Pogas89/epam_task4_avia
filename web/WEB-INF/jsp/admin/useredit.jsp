@@ -5,7 +5,7 @@
   Time: 9:31
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:if test="${empty user}">
     <jsp:useBean id="user" class="by.epam.ivanov.aviacompany.entity.User"/>
@@ -36,15 +36,7 @@
     <label for="userRole">Role</label>
     <select id="userRole" name="userRole">
         <c:forEach var="userRole" items="${userRoles}">
-            <c:choose>
-                <c:when test="${userRole.id == user.userRole.id}">
-                    <c:set var="selected" value="selected"/>
-                </c:when>
-                <c:otherwise>
-                    <c:remove var="selected"/>
-                </c:otherwise>
-            </c:choose>
-            <option value="${userRole.id}" ${selected}>${userRole.name}</option>
+            <option value="${userRole.id}" ${userRole.id == user.userRole.id} ? 'selected' :'' >${userRole.name}</option>
         </c:forEach>
     </select><br>
     <button class="save">Save</button>

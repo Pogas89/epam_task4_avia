@@ -11,9 +11,7 @@ public interface StaffService {
 
     List<Staff> readStaffs() throws ServiceException;
 
-    void add(Staff staff) throws ServiceException;
-
-    void change(Staff staff) throws ServiceException;
+    void save(Staff staff) throws ServiceException;
 
     void delete(Integer id) throws ServiceException;
 }

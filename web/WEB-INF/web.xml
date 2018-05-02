@@ -4,20 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
          metadata-complete="true">
-    
+
     <servlet>
         <servlet-name>Controller</servlet-name>
         <servlet-class>by.epam.ivanov.aviacompany.controller.Controller</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
-
-    <listener>
-        <listener-class>by.epam.ivanov.aviacompany.util.Log4jInit</listener-class>
-    </listener>
 
     <filter>
         <filter-name>EncodingFilter</filter-name>
@@ -30,9 +26,13 @@
 
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+
+    <listener>
+        <listener-class>by.epam.ivanov.aviacompany.util.Log4jInit</listener-class>
+    </listener>
 
 </web-app>
