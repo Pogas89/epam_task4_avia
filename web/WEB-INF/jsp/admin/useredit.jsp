@@ -6,17 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:if test="${empty user}">
     <jsp:useBean id="user" class="by.epam.ivanov.aviacompany.entity.User"/>
 </c:if>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>User data</title>
-</head>
-<body>
-<h2>User data</h2>
+<c:set var="title" value="${not empty user.id?'Edit User Form':'Creating User Form'}"/>
+<u:admin title="${title}">
+<h2>${title}</h2>
 <c:url var="UserList" value="/admin/userlist.html"/>
 <c:url var="UserSave" value="/admin/usersave.html"/>
 <form action="${UserSave}" method="post">
@@ -36,10 +33,10 @@
     <label for="userRole">Role</label>
     <select id="userRole" name="userRole">
         <c:forEach var="userRole" items="${userRoles}">
-            <option value="${userRole.id}" ${userRole.id == user.userRole.id} ? 'selected' :'' >${userRole.name}</option>
+            <option value="${userRole.id}" ${userRole.id == user.userRole.id ?
+            'selected' :''}>${userRole.name}</option>
         </c:forEach>
     </select><br>
     <button class="save">Save</button>
 </form>
-</body>
-</html>
+</u:admin>

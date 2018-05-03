@@ -63,3 +63,32 @@ form button.edit {
     background: #0C4 url('edit.png') no-repeat;
 }
 
+#menu{
+    width: 100%;
+    background-color: aqua;
+}
+
+#menu li{
+    display: inline-block;
+}
+
+#menu a:link, #menu a:visited{
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding: 0 13px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 13px;
+}
+
+#menu a:hover{
+    color: #ffffff;
+    text-decoration: none;
+    background-color: aquamarine;
+}
+
+#menu ul{
+    margin-left: 13px;
+    padding: 0;
+}
