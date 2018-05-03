@@ -5,7 +5,7 @@ public class Pages {
     public static final String LOGIN_PAGE = "/WEB-INF/jsp/login.jsp";
     public static final String USERLIST_PAGE = "/WEB-INF/jsp/admin/userlist.jsp";
     public static final String USEREDIT_PAGE = "/WEB-INF/jsp/admin/useredit.jsp";
-    public static final String STAFFLIST_PAGE = "/WEB-INF/jsp/admin/stafflist.jsp";
-    public static final String STAFFEDIT_PAGE = "/WEB-INF/jsp/admin/staffedit.jsp";
-    public static final String CREWLIST_PAGE = "/WEB-INF/jsp/admin/crewlist.jsp";
+    public static final String STAFFLIST_PAGE = "/WEB-INF/jsp/dispetcher/stafflist.jsp";
+    public static final String STAFFEDIT_PAGE = "/WEB-INF/jsp/dispetcher/staffedit.jsp";
+    public static final String CREWLIST_PAGE = "/WEB-INF/jsp/dispetcher/crewlist.jsp";
 }

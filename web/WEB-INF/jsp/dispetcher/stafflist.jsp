@@ -30,13 +30,13 @@
             <td>${staff.lastName}</td>
             <td>${staff.department}</td>
             <td class="empty">
-                <c:url var="staffEdit" value="/admin/staffedit.html">
+                <c:url var="staffEdit" value="/dispetcher/staffedit.html">
                     <c:param name="id" value="${staff.id}"/>
                 </c:url>
                 <a href="${staffEdit}" class="edit"/>
             </td>
             <td>
-                <c:url var="staffDelete" value="/admin/staffdelete.html">
+                <c:url var="staffDelete" value="/dispetcher/staffdelete.html">
                     <c:param name="id" value="${staff.id}"/>
                 </c:url>
                 <a href="${staffDelete}" class="delete"></a>
@@ -44,6 +44,6 @@
         </tr>
     </c:forEach>
 </table>
-<a href="/admin/staffedit.html" class="add"></a>
+<a href="/dispetcher/staffedit.html" class="add"></a>
 </body>
 </html>

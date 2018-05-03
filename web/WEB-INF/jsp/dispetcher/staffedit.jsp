@@ -17,8 +17,8 @@
 </head>
 <body>
 <h2>Staff data</h2>
-<c:url var="StaffList" value="/admin/stafflist.html"/>
-<c:url var="StaffSave" value="/admin/staffsave.html"/>
+<c:url var="StaffList" value="/dispetcher/stafflist.html"/>
+<c:url var="StaffSave" value="/dispetcher/staffsave.html"/>
 <form action="${StaffSave}" method="post">
     <c:if test="${not empty staff.id}">
         <input name="id" value="${staff.id}" type="hidden">
