@@ -36,15 +36,7 @@
     <label for="userRole">Role</label>
     <select id="userRole" name="userRole">
         <c:forEach var="userRole" items="${userRoles}">
-            <c:choose>
-                <c:when test="${userRole.id == user.userRole.id}">
-                    <c:set var="selected" value="selected"/>
-                </c:when>
-                <c:otherwise>
-                    <c:remove var="selected"/>
-                </c:otherwise>
-            </c:choose>
-            <option value="${userRole.id}" ${selected}>${userRole.name}</option>
+            <option value="${userRole.id}" ${userRole.id == user.userRole.id} ? 'selected' :'' >${userRole.name}</option>
         </c:forEach>
     </select><br>
     <button class="save">Save</button>

@@ -11,6 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Staff list</title>
+    <c:url var="css" value="/main.css"/>
+    <link href="${css}" rel="stylesheet">
 </head>
 <body>
 <h2>Staff list</h2>
@@ -19,9 +21,10 @@
         <th>Name</th>
         <th>Surname</th>
         <th>Department</th>
-        <td>&nbsp;</td>
+        <td>Edit</td>
+        <td>Delete</td>
     </tr>
-    <c:forEach var="staff" items="${stafflist}">
+    <c:forEach var="staff" items="${staffList}">
         <tr>
             <td>${staff.firstName}</td>
             <td>${staff.lastName}</td>
@@ -32,9 +35,15 @@
                 </c:url>
                 <a href="${staffEdit}" class="edit"/>
             </td>
+            <td>
+                <c:url var="staffDelete" value="/admin/staffdelete.html">
+                    <c:param name="id" value="${staff.id}"/>
+                </c:url>
+                <a href="${staffDelete}" class="delete"></a>
+            </td>
         </tr>
     </c:forEach>
 </table>
-<a href="/admin/staffadd.html" class="add"></a>
+<a href="/admin/staffedit.html" class="add"></a>
 </body>
 </html>

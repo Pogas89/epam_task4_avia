@@ -19,7 +19,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public Staff readById(Integer id) throws ServiceException {
-        try{
+        try {
             return staffDAO.read(id);
         } catch (DaoException e) {
             LOGGER.error(e.getMessage());
@@ -29,7 +29,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public Staff readByLastname(String lastName) throws ServiceException {
-        try{
+        try {
             return staffDAO.readByLastName(lastName);
         } catch (DaoException e) {
             LOGGER.error(e.getMessage());
@@ -39,7 +39,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public List<Staff> readStaffs() throws ServiceException {
-        try{
+        try {
             return staffDAO.getStaffs();
         } catch (DaoException e) {
             LOGGER.error(e.getMessage());
@@ -48,19 +48,18 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public void add(Staff staff) throws ServiceException {
-        try{
-            Integer id=staffDAO.create(staff);
-            staff.setId(id);
+    public void save(Staff staff) throws ServiceException {
+        try {
+            if (staff.getId() == null) {
+                Integer id = staffDAO.create(staff);
+                staff.setId(id);
+            } else {
+                staffDAO.update(staff);
+            }
         } catch (DaoException e) {
             LOGGER.error(e.getMessage());
             throw new ServiceException(e);
         }
-    }
-
-    @Override
-    public void change(Staff staff) throws ServiceException {
-
     }
 
     @Override
