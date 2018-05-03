@@ -1,11 +1,15 @@
 package by.epam.ivanov.aviacompany.util.serviceFactory;
 
+import by.epam.ivanov.aviacompany.dao.CrewDAO;
 import by.epam.ivanov.aviacompany.dao.StaffDAO;
 import by.epam.ivanov.aviacompany.dao.UserDAO;
+import by.epam.ivanov.aviacompany.dao.mysql.MySqlCrewDAO;
 import by.epam.ivanov.aviacompany.dao.mysql.MySqlStaffDAO;
 import by.epam.ivanov.aviacompany.dao.mysql.MySqlUserDAO;
+import by.epam.ivanov.aviacompany.service.CrewService;
 import by.epam.ivanov.aviacompany.service.StaffService;
 import by.epam.ivanov.aviacompany.service.UserService;
+import by.epam.ivanov.aviacompany.service.logic.CrewServiceImpl;
 import by.epam.ivanov.aviacompany.service.logic.StaffServiceImpl;
 import by.epam.ivanov.aviacompany.service.logic.UserServiceImpl;
 import by.epam.ivanov.aviacompany.util.connection.ConnectionPool;
@@ -66,5 +70,19 @@ public class ServiceFactoryImpl implements ServiceFactory {
             LOGGER.debug("Closing connection" + connection);
             connection.close();
         }
+    }
+
+    @Override
+    public CrewService getCrewService() throws ServiceFactoryException {
+        CrewServiceImpl service = new CrewServiceImpl();
+        service.setCrewDAO(getCrewDAO());
+        return service;
+    }
+
+    @Override
+    public CrewDAO getCrewDAO() throws ServiceFactoryException {
+        MySqlCrewDAO crewDAO = new MySqlCrewDAO();
+        crewDAO.setConnection(connection);
+        return  crewDAO;
     }
 }

@@ -11,6 +11,8 @@ public interface StaffService {
 
     List<Staff> readStaffs() throws ServiceException;
 
+    List<Staff> readStaffFromCrew(Integer id) throws ServiceException;
+
     void save(Staff staff) throws ServiceException;
 
     void delete(Integer id) throws ServiceException;
