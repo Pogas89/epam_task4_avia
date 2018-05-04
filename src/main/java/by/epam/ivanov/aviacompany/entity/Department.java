@@ -1,10 +1,10 @@
 package by.epam.ivanov.aviacompany.entity;
 
 public enum Department {
-    PILOT("Pilot"),
-    NAVIGATOR("Navigator"),
-    RADIOMAN("Radioman"),
-    ATTENDANT("Attendant");
+    PILOT("department.pilot"),
+    NAVIGATOR("department.navigator"),
+    RADIOMAN("department.radioman"),
+    ATTENDANT("department.attendant");
 
     private String name;
 

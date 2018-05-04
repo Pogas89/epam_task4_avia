@@ -16,10 +16,10 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="/admin/userlist.html">List of Users</a>
+            <a href="/dispetcher/stafflist.html">List of Staffs</a>
         </li>
         <li>
-            <a href="/admin/userlist.html">в никуда</a>
+            <a href="/dispetcher/stafflist.html">В никуда</a>
         </li>
     </ul>
 </div>

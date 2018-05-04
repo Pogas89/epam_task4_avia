@@ -6,8 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
+
 <c:if test="${empty user}">
     <jsp:useBean id="user" class="by.epam.ivanov.aviacompany.entity.User"/>
 </c:if>
@@ -20,23 +22,23 @@
     <c:if test="${not empty user.id}">
         <input name="id" value="${user.id}" type="hidden">
     </c:if>
-    <label>Login:</label>
+    <label><fmt:message key="useredit.form.login"/></label>
     <input type="text" name="login" id="${user.login}" value="${user.login}" required><br>
-    <label>password:</label>
+    <label><fmt:message key="useredit.form.password"/></label>
     <input type="password" name="password" id="${user.password}" value="${user.password}" required><br>
-    <label>Firstname:</label>
+    <label><fmt:message key="useredit.form.firstname"/></label>
     <input type="text" name="firstName" id="${user.firstName}" value="${user.firstName}" required><br>
-    <label>Lastname:</label>
+    <label><fmt:message key="useredit.form.lastname"/></label>
     <input type="text" name="lastName" id="${user.lastName}" value="${user.lastName}" required><br>
-    <label>Email:</label>
+    <label><fmt:message key="useredit.form.email"/></label>
     <input type="email" name="email" id="${user.email}" value=" ${user.email}" required><br>
-    <label for="userRole">Role</label>
+    <label for="userRole"><fmt:message key="useredit.form.userrole"/></label>
     <select id="userRole" name="userRole">
         <c:forEach var="userRole" items="${userRoles}">
             <option value="${userRole.id}" ${userRole.id == user.userRole.id ?
             'selected' :''}>${userRole.name}</option>
         </c:forEach>
     </select><br>
-    <button class="save">Save</button>
+    <button class="save"><fmt:message key="useredit.button.save"/></button>
 </form>
 </u:admin>

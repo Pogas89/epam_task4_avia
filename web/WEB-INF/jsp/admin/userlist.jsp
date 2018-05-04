@@ -6,20 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
-<u:admin title="User list">
-    <h2>User list</h2>
+<fmt:message key="userlist.title" var="title"/>
+<u:admin title="${title}">
+    <h2>${title}</h2>
     <table>
         <tr>
-            <th>Login</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Email</th>
-            <th>Role</th>
-            <td>Edit</td>
-            <td>Delete</td>
+            <th><fmt:message key="userlist.table.login"/></th>
+            <th><fmt:message key="userlist.table.firstname"/></th>
+            <th><fmt:message key="userlist.table.lastname"/></th>
+            <th><fmt:message key="userlist.table.email"/></th>
+            <th><fmt:message key="userlist.table.userrole"/></th>
+            <td><fmt:message key="userlist.button.edit"/></td>
+            <td><fmt:message key="userlist.button.delete"/></td>
         </tr>
         <c:forEach var="user" items="${userList}">
             <tr>
@@ -44,6 +46,4 @@
         </c:forEach>
     </table>
     <a href="/admin/useredit.html" class="add"></a>
-    </body>
-    </html>
 </u:admin>

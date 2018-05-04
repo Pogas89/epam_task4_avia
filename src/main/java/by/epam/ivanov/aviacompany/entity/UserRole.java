@@ -1,8 +1,8 @@
 package by.epam.ivanov.aviacompany.entity;
 
 public enum UserRole {
-    ADMIN("Admin"),
-    DISPETCHER("Dispetcher");
+    ADMIN("userrole.admin"),
+    DISPETCHER("userrole.dispetcher");
 
     private String name;
 
