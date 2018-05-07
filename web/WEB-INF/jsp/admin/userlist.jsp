@@ -29,7 +29,7 @@
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
                 <td>${user.email}</td>
-                <td>${user.userRole}</td>
+                <td><fmt:message key="${user.userRole.name}"/></td>
                 <td>
                     <c:url var="userEdit" value="/admin/useredit.html">
                         <c:param name="id" value="${user.id}"/>

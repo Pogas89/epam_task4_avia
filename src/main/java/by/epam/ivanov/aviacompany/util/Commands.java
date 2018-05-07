@@ -11,6 +11,7 @@ public class Commands {
     public static final String STAFFDELETE_COMMAND = "/dispetcher/staffdelete.html";
     public static final String LOGIN_COMMAND = "/login.html";
     public static final String LOGOUT_COMMAND = "/logout.html";
+    public static final String MAIN_COMMAND = "/";
 
 
 }

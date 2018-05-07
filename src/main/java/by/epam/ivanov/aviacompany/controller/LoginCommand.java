@@ -1,6 +1,7 @@
 package by.epam.ivanov.aviacompany.controller;
 
 import by.epam.ivanov.aviacompany.entity.User;
+import by.epam.ivanov.aviacompany.entity.UserRole;
 import by.epam.ivanov.aviacompany.service.ServiceException;
 import by.epam.ivanov.aviacompany.service.UserService;
 import by.epam.ivanov.aviacompany.util.Pages;
@@ -26,7 +27,11 @@ public class LoginCommand extends Command {
                 if (user != null && password.equals(user.getPassword())) {
                     HttpSession session = request.getSession();
                     session.setAttribute("currentUser", user);
-                    return "/index.jsp";
+                    if(user.getUserRole().equals(UserRole.ADMIN)){
+                        return Pages.USERLIST_PAGE;
+                    } else if(user.getUserRole().equals(UserRole.DISPETCHER)){
+                        return Pages.STAFFLIST_PAGE;
+                    }
                 } else {
                     return Pages.LOGIN_PAGE + "?message=Login or password incorrect";
                 }
@@ -36,5 +41,6 @@ public class LoginCommand extends Command {
             }
         } else
             return Pages.LOGIN_PAGE;
+        return null;
     }
 }

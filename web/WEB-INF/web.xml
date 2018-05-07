@@ -5,6 +5,9 @@
          version="3.1"
          metadata-complete="true">
 
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
         <param-value>pagecontent</param-value>

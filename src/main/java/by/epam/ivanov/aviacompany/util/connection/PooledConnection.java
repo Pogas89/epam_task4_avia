@@ -43,7 +43,6 @@ public class PooledConnection implements Connection {
 
     @Override
     public void close() throws SQLException {
-        LOGGER.debug("close connection" + connection);
         pool.freeConnectionWrapper(this);
     }
 

@@ -109,7 +109,6 @@ public class ConnectionPool {
     }
 
     void freeConnectionWrapper(PooledConnection connection) {
-        LOGGER.debug("free connection " + connection);
         used.remove(connection);
         free.add(connection);
     }

@@ -29,6 +29,7 @@ public class Controller extends HttpServlet {
             try (ServiceFactory factory = getServiceFactory()) {
                 LOGGER.debug("Controller has ServiceFactory" + factory);
                 command.setServiceFactory(factory);
+                LOGGER.debug("command=" + command);
                 page = command.execute(req, resp);
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

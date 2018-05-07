@@ -1,2 +1,0 @@
-cd cd C:\Program Files\Java\jdk-9.0.3\bin
-native2ascii -encoding utf-8 D:\JavaProgs\avia\internationalization\pagecontent_ru.utf8 D:\JavaProgs\avia\src\main\resources\pagecontent_ru.properties

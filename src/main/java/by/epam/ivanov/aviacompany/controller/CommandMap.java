@@ -26,7 +26,8 @@ class CommandMap {
         commandMap.put(Commands.STAFFSAVE_COMMAND, new StaffSaveCommand());
         commandMap.put(Commands.STAFFDELETE_COMMAND, new StaffDeleteCommand());
         commandMap.put(Commands.LOGIN_COMMAND, new LoginCommand());
-//        commandMap.put(Commands.LOGOUT_COMMAND, new LogoutCommand());
+        commandMap.put(Commands.LOGOUT_COMMAND, new LogoutCommand());
+        commandMap.put(Commands.MAIN_COMMAND, new MainCommand());
 
         //todo: дописать остальные команды
     }

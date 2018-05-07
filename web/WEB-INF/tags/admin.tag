@@ -1,7 +1,7 @@
 <%@tag language="java" pageEncoding="UTF-8" %>
 <%@attribute name="title" required="true" type="java.lang.String" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:setLocale value="en"/>
 
 <!doctype html>
@@ -21,6 +21,14 @@
         <li>
             <a href="/admin/userlist.html">в никуда</a>
         </li>
+        <c:if test="${not empty currentUser}">
+            <li>
+                <fmt:message key="app.welcome"/>: ${currentUser.login}
+            </li>
+            <li>
+                <a href="/logout.html"><fmt:message key="app.button.loguot"/></a>
+            </li>
+        </c:if>
     </ul>
 </div>
 <jsp:doBody/>

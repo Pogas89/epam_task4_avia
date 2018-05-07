@@ -13,7 +13,5 @@
 </head>
 <body>
 <p><a href="login.html">LogIn</a></p>
-<p><a href="admin/userlist.html">user list</a></p>
-<p><a href="dispetcher/stafflist.html">staff list</a></p>
 </body>
 </html>

@@ -21,6 +21,14 @@
         <li>
             <a href="/dispetcher/stafflist.html">В никуда</a>
         </li>
+        <c:if test="${not empty currentUser}">
+            <li>
+                <fmt:message key="app.welcome"/>: ${currentUser.login}
+            </li>
+            <li>
+                <a href="/logout.html"><fmt:message key="app.button.loguot"/></a>
+            </li>
+        </c:if>
     </ul>
 </div>
 <jsp:doBody/>

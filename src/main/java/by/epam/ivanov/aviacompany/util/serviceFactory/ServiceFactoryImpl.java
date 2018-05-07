@@ -56,7 +56,6 @@ public class ServiceFactoryImpl implements ServiceFactory {
         try {
             pool = ConnectionPool.getInstance();
             connection = pool.getConnection();
-            LOGGER.debug("getConnection " + connection);
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e.getMessage());
             e.printStackTrace();
@@ -67,7 +66,6 @@ public class ServiceFactoryImpl implements ServiceFactory {
     @Override
     public void close() throws Exception {
         if (connection!=null) {
-            LOGGER.debug("Closing connection" + connection);
             connection.close();
         }
     }

@@ -25,7 +25,7 @@
             <tr>
                 <td>${staff.firstName}</td>
                 <td>${staff.lastName}</td>
-                <td>${staff.department}</td>
+                <td><fmt:message key="${staff.department.name}"/></td>
                 <td class="empty">
                     <c:url var="staffEdit" value="/dispetcher/staffedit.html">
                         <c:param name="id" value="${staff.id}"/>

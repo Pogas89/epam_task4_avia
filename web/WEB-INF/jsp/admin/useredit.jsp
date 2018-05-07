@@ -13,7 +13,7 @@
 <c:if test="${empty user}">
     <jsp:useBean id="user" class="by.epam.ivanov.aviacompany.entity.User"/>
 </c:if>
-<c:set var="title" value="${not empty user.id?'Edit User Form':'Creating User Form'}"/>
+<fmt:message  var="title" key="${not empty user.id?'useredit.title.edit':'useredit.title.add'}"/>
 <u:admin title="${title}">
 <h2>${title}</h2>
 <c:url var="UserList" value="/admin/userlist.html"/>
@@ -36,7 +36,7 @@
     <select id="userRole" name="userRole">
         <c:forEach var="userRole" items="${userRoles}">
             <option value="${userRole.id}" ${userRole.id == user.userRole.id ?
-            'selected' :''}>${userRole.name}</option>
+                    'selected' :''}><fmt:message key="${userRole.name}"/></option>
         </c:forEach>
     </select><br>
     <button class="save"><fmt:message key="useredit.button.save"/></button>
