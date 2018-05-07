@@ -1,0 +1,46 @@
+app.title=Авиакомпания
+
+userrole.admin=Администратор
+userrole.dispetcher=Диспетчер
+
+department.pilot=Пилот
+department.navigator=Штурман
+department.radioman=Радист
+department.attendant=Стюардесса
+
+flightstatus.opened=Идет регистрация
+flightstatus.closed=Регистрация закрыта
+flightstatus.canceled=Отменен
+
+userlist.title=Список пользователей
+userlist.table.login=Логин
+userlist.table.firstname=Имя
+userlist.table.lastname=Фамилия
+userlist.table.email=Электронная Почта
+userlist.table.userrole=Роль
+userlist.button.edit=Редактировать
+userlist.button.delete=Удалить
+
+useredit.title.edit=Редактирование пользователя
+useredit.title.add=Добавление пользователя
+useredit.form.login=Логин
+useredit.form.password=Пароль
+useredit.form.firstname=Имя
+useredit.form.lastname=Фамилия
+useredit.form.email=Электронная Почта
+useredit.form.userrole=Роль
+useredit.button.save=Сохранить
+
+stafflist.title=Список сотрудников
+stafflist.table.firstname=Имя
+stafflist.table.lastname=Фамилия
+stafflist.table.department=Должность
+stafflist.button.edit=Редактировать
+stafflist.button.delete=Удалить
+
+staffedit.title.add=Редактирование сотрудника
+staffedit.title.edit=Добавление сотрудника
+staffedit.form.firstname=Имя
+staffedit.form.lastname=Фамилия
+staffedit.form.department=Должность
+staffedit.button.save=Сохранить

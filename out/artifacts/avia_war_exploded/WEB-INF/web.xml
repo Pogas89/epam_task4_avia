@@ -5,6 +5,10 @@
          version="3.1"
          metadata-complete="true">
 
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>pagecontent</param-value>
+    </context-param>
     <servlet>
         <servlet-name>Controller</servlet-name>
         <servlet-class>by.epam.ivanov.aviacompany.controller.Controller</servlet-class>

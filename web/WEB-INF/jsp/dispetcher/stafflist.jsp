@@ -18,8 +18,8 @@
             <th><fmt:message key="stafflist.table.firstname"/></th>
             <th><fmt:message key="stafflist.table.lastname"/></th>
             <th><fmt:message key="stafflist.table.department"/></th>
-            <td><fmt:message key="stafflist.button.edit"/></td>
-            <td><fmt:message key="stafflist.button.delete"/></td>
+            <th><fmt:message key="stafflist.button.edit"/></th>
+            <th><fmt:message key="stafflist.button.delete"/></th>
         </tr>
         <c:forEach var="staff" items="${staffList}">
             <tr>

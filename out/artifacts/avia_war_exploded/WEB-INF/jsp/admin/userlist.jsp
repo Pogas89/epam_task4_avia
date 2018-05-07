@@ -20,8 +20,8 @@
             <th><fmt:message key="userlist.table.lastname"/></th>
             <th><fmt:message key="userlist.table.email"/></th>
             <th><fmt:message key="userlist.table.userrole"/></th>
-            <td><fmt:message key="userlist.button.edit"/></td>
-            <td><fmt:message key="userlist.button.delete"/></td>
+            <th><fmt:message key="userlist.button.edit"/></th>
+            <th><fmt:message key="userlist.button.delete"/></th>
         </tr>
         <c:forEach var="user" items="${userList}">
             <tr>
