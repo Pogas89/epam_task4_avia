@@ -21,6 +21,26 @@ form button {
     padding: 0 5px 0 29px;
 }
 
+form button.save {
+    background: url('save.png') no-repeat;
+}
+
+form button.add {
+    background: url('add.png') no-repeat;
+}
+
+form button.delete {
+    background: url('delete.png') no-repeat;
+}
+
+form button.edit {
+    background: url('edit.png') no-repeat;
+}
+
+form button.cancel {
+    background: url('edit.png') no-repeat;
+}
+
 form button.login{
     padding: 0 32px 0 32px;
 }
@@ -43,24 +63,6 @@ a.add {
     width: 27px;
     height: 27px;
     background: url('add.png');
-}
-
-
-
-form button.save {
-    background: #0C4 url('save.png') no-repeat;
-}
-
-form button.add {
-    background: #0C4 url('add.png') no-repeat;
-}
-
-form button.delete {
-    background: #0C4 url('delete.png') no-repeat;
-}
-
-form button.edit {
-    background: #0C4 url('edit.png') no-repeat;
 }
 
 #menu{

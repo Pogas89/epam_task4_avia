@@ -34,5 +34,8 @@
             </c:forEach>
         </select><br>
         <button class="save"><fmt:message key="staffedit.button.save"/></button>
+        <button class="cancel" formnovalidate formaction="${StaffList}" formmethod="get">
+            <fmt:message key="staffedit.button.cancel"/>
+        </button>
     </form>
 </u:dispetcher>
