@@ -66,6 +66,8 @@ form button.edit {
 #menu{
     width: 100%;
     background-color: aqua;
+    color: white;
+    font-size: 18px;
 }
 
 #menu li{
@@ -76,10 +78,10 @@ form button.edit {
     color: #ffffff;
     text-decoration: none;
     display: block;
-    padding: 0 13px;
-    line-height: 35px;
+    padding: 0 18px;
+    line-height: 45px;
     text-align: center;
-    font-size: 13px;
+    font-size: 18px;
 }
 
 #menu a:hover{
@@ -89,6 +91,6 @@ form button.edit {
 }
 
 #menu ul{
-    margin-left: 13px;
+    margin-left: 18px;
     padding: 0;
 }

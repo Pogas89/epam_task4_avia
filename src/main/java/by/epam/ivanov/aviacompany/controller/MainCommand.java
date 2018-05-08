@@ -16,15 +16,14 @@ public class MainCommand extends Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            LOGGER.debug("session" + session);
-            User user = (User) request.getAttribute("currentUser");
+            User user = (User) session.getAttribute("currentUser");
             if (user != null) {
                 LOGGER.debug("current user:" + user.getLogin());
                 switch (user.getUserRole()) {
                     case ADMIN:
-                        return Pages.USERLIST_PAGE;
+                        return Pages.ADMIN_PAGE;
                     case DISPETCHER:
-                        return Pages.STAFFLIST_PAGE;
+                        return Pages.DISPETCHER_PAGE;
                 }
             }
         }

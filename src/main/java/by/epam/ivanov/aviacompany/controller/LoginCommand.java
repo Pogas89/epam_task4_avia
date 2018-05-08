@@ -28,9 +28,9 @@ public class LoginCommand extends Command {
                     HttpSession session = request.getSession();
                     session.setAttribute("currentUser", user);
                     if(user.getUserRole().equals(UserRole.ADMIN)){
-                        return Pages.USERLIST_PAGE;
+                        return Pages.ADMIN_PAGE;
                     } else if(user.getUserRole().equals(UserRole.DISPETCHER)){
-                        return Pages.STAFFLIST_PAGE;
+                        return Pages.DISPETCHER_PAGE;
                     }
                 } else {
                     return Pages.LOGIN_PAGE + "?message=Login or password incorrect";
