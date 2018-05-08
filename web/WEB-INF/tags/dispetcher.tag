@@ -19,6 +19,9 @@
             <a href="/dispetcher/stafflist.html">List of Staffs</a>
         </li>
         <li>
+            <a href="/dispetcher/crewlist.html">List of Crew</a>
+        </li>
+        <li>
             <a href="/dispetcher/stafflist.html">В никуда</a>
         </li>
         <c:if test="${not empty currentUser}">

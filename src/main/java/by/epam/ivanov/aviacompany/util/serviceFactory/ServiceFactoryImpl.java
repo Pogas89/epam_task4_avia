@@ -80,7 +80,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
     @Override
     public CrewDAO getCrewDAO() throws ServiceFactoryException {
         MySqlCrewDAO crewDAO = new MySqlCrewDAO();
-        crewDAO.setConnection(connection);
+        crewDAO.setConnection(getConnection());
         return  crewDAO;
     }
 }

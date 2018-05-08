@@ -28,6 +28,7 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
                 crewList.add(crew);
             }
         } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
             throw new DaoException(e);
         }
         return crewList;

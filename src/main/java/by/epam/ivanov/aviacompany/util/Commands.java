@@ -12,6 +12,6 @@ public class Commands {
     public static final String LOGIN_COMMAND = "/login.html";
     public static final String LOGOUT_COMMAND = "/logout.html";
     public static final String MAIN_COMMAND = "/";
-
-
+    public static final String INDEX_PAGE_COMMAND = "/index.html";
+    public static final String CREWLIST_COMMAND = "/dispetcher/crewlist.html";
 }
