@@ -14,4 +14,8 @@ public class Commands {
     public static final String MAIN_COMMAND = "/";
     public static final String INDEX_PAGE_COMMAND = "/index.html";
     public static final String CREWLIST_COMMAND = "/dispetcher/crewlist.html";
+    public static final String CREWEDIT_COMMAND = "/dispetcher/crewedit.html";
+    public static final String CREWSAVE_COMMAND = "/dispetcher/crewsave.html";
+    public static final String CREWSHOW_COMMAND = "/dispetcher/crewshow.html";
+    public static final String ADDSTAFFINCREW_COMMAND = "/dispetcher/addstaffincrew.html";
 }

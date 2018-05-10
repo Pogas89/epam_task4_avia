@@ -41,6 +41,10 @@ form button.cancel {
     background: url('edit.png') no-repeat;
 }
 
+form button.show {
+    background: url('show.png') no-repeat;
+}
+
 form button.login{
     padding: 0 32px 0 32px;
 }
@@ -51,6 +55,7 @@ a.edit {
     height: 27px;
     background: url('edit.png');
 }
+
 a.delete {
     display: inline-block;
     width: 27px;
@@ -63,6 +68,13 @@ a.add {
     width: 27px;
     height: 27px;
     background: url('add.png');
+}
+
+a.show {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('show.png');
 }
 
 #menu{

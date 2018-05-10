@@ -156,4 +156,21 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
             throw new DaoException(e);
         }
     }
+
+    @Override
+    public List<Staff> getFreeStaffs() throws DaoException {
+        String sql = "SELECT staff.* FROM staff WHERE st_id NOT IN (SELECT crew_staff.st_id FROM crew_staff);";
+        List<Staff> freeStaff = new ArrayList<>();
+        Staff staff;
+        try (Statement statement = getConnection().createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                staff = getStafFromDB(resultSet);
+                freeStaff.add(staff);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return freeStaff;
+    }
 }

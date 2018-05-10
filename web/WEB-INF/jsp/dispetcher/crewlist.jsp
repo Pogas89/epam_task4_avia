@@ -24,7 +24,7 @@
         <c:forEach var="crew" items="${crewList}">
             <tr>
                 <td>${crew.name}</td>
-                <td></td><!-- подтянуть usera создателя -->
+                <td>${crew.user.login}</td><!-- todo: не работает, подтянуть usera создателя -->
                 <td class="empty">
                     <c:url var="crewEdit" value="/dispetcher/crewedit.html">
                         <c:param name="id" value="${crew.id}"/>
@@ -41,6 +41,7 @@
                     <c:url var="crewShow" value="/dispetcher/crewshow.html">
                         <c:param name="id" value="${crew.id}"/>
                     </c:url>
+                    <a href="${crewShow}" class="show"></a>
                 </td>
             </tr>
         </c:forEach>

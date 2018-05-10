@@ -2,7 +2,6 @@
 <%@attribute name="title" required="true" type="java.lang.String" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<fmt:setLocale value="en"/>
 
 <!doctype html>
 <html>
@@ -16,7 +15,7 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="/admin/userlist.html">List of Users</a>
+            <a href="/admin/userlist.html"><fmt:message key="userlist.title"/></a>
         </li>
         <li>
             <a href="/admin/userlist.html">в никуда</a>

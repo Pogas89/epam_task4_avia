@@ -74,6 +74,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
     public CrewService getCrewService() throws ServiceFactoryException {
         CrewServiceImpl service = new CrewServiceImpl();
         service.setCrewDAO(getCrewDAO());
+        service.setStaffDAO(getStaffDAO());
         return service;
     }
 

@@ -1,6 +1,7 @@
 package by.epam.ivanov.aviacompany.service;
 
 import by.epam.ivanov.aviacompany.entity.Crew;
+import by.epam.ivanov.aviacompany.entity.Staff;
 
 import java.util.List;
 
@@ -12,4 +13,8 @@ public interface CrewService {
     void save (Crew crew) throws ServiceException;
 
     void delete(Integer id) throws ServiceException;
+
+    List<Staff> readFreeStaff() throws ServiceException;
+
+    List<Staff> readStaffFromCrew(Integer id) throws ServiceException;
 }

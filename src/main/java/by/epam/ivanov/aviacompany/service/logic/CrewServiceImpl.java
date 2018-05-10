@@ -2,7 +2,9 @@ package by.epam.ivanov.aviacompany.service.logic;
 
 import by.epam.ivanov.aviacompany.dao.CrewDAO;
 import by.epam.ivanov.aviacompany.dao.DaoException;
+import by.epam.ivanov.aviacompany.dao.StaffDAO;
 import by.epam.ivanov.aviacompany.entity.Crew;
+import by.epam.ivanov.aviacompany.entity.Staff;
 import by.epam.ivanov.aviacompany.service.CrewService;
 import by.epam.ivanov.aviacompany.service.ServiceException;
 
@@ -10,6 +12,11 @@ import java.util.List;
 
 public class CrewServiceImpl implements CrewService {
     private CrewDAO crewDAO;
+    private StaffDAO staffDAO;
+
+    public void setStaffDAO(StaffDAO staffDAO) {
+        this.staffDAO = staffDAO;
+    }
 
     public void setCrewDAO(CrewDAO crewDAO) {
         this.crewDAO = crewDAO;
@@ -51,6 +58,24 @@ public class CrewServiceImpl implements CrewService {
     public void delete(Integer id) throws ServiceException {
         try {
             crewDAO.delete(id);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Staff> readFreeStaff() throws ServiceException {
+        try{
+            return staffDAO.getFreeStaffs();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Staff> readStaffFromCrew(Integer id) throws ServiceException {
+        try{
+            return staffDAO.getStaffsFromCrew(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

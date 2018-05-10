@@ -10,4 +10,6 @@ public interface StaffDAO extends DAO<Staff> {
     List<Staff> getStaffs() throws DaoException;
 
     List<Staff> getStaffsFromCrew(Integer cr_id) throws DaoException;
+
+    List<Staff> getFreeStaffs() throws DaoException;
 }
