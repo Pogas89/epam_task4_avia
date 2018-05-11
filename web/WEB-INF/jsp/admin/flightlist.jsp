@@ -33,6 +33,7 @@
                 <td>${flight.date}</td>
                 <td>${flight.time}</td>
                 <td><fmt:message key="${flight.status.name}"/></td>
+                <td>${flight.crew.name}</td>
                 <td>
                     <c:url var="flightEdit" value="/admin/flightedit.html">
                         <c:param name="id" value="${flight.id}"/>

@@ -1,7 +1,9 @@
 package by.epam.ivanov.aviacompany.controller.flightCommands;
 
 import by.epam.ivanov.aviacompany.controller.Command;
+import by.epam.ivanov.aviacompany.entity.Crew;
 import by.epam.ivanov.aviacompany.entity.Flight;
+import by.epam.ivanov.aviacompany.service.CrewService;
 import by.epam.ivanov.aviacompany.service.FlightService;
 import by.epam.ivanov.aviacompany.service.ServiceException;
 import by.epam.ivanov.aviacompany.util.Pages;
@@ -21,6 +23,17 @@ public class FlightListCommand extends Command {
         try {
             FlightService service = getServiceFactory().getFlightService();
             List<Flight> flightList = service.readFlights();
+            if(!flightList.isEmpty()) {
+                CrewService crewService = getServiceFactory().getCrewService();
+                Crew crew;
+                Integer id;
+                for (Flight f : flightList) {
+                    crew = f.getCrew();
+                    id = crew.getId();
+                    crew = crewService.readById(id);
+                    f.setCrew(crew);
+                }
+            }
             request.setAttribute("flightList", flightList);
             return Pages.FLIGHTLIST_PAGE;
         } catch (ServiceFactoryException | ServiceException e) {

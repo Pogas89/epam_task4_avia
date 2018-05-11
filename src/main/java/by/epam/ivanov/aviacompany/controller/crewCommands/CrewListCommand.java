@@ -23,6 +23,17 @@ public class CrewListCommand extends Command {
         try {
             CrewService crewService = getServiceFactory().getCrewService();
             List<Crew> crewList = crewService.readCrews();
+            if(!crewList.isEmpty()){
+                UserService userService = getServiceFactory().getUserService();
+                Integer id;
+                User user;
+                for (Crew c:crewList) {
+                    user = c.getUser();
+                    id = user.getId();
+                    user = userService.readById(id);
+                    c.setUser(user);
+                }
+            }
             request.setAttribute("crewList", crewList);
             return Pages.CREWLIST_PAGE;
         } catch (ServiceFactoryException | ServiceException e) {

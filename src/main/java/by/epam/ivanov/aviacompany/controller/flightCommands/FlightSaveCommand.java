@@ -32,7 +32,7 @@ public class FlightSaveCommand extends Command {
         flight.setDeparture(request.getParameter("departure"));
         flight.setDestination(request.getParameter("destination"));
         flight.setDate(Date.valueOf(request.getParameter("date")));
-        flight.setTime(Time.valueOf(request.getParameter("time")));//todo: исправить ошибку
+        flight.setTime(Time.valueOf(request.getParameter("time")+":00"));//todo: исправить ошибку
         try {
             flight.setStatus(FlightStatus.values()[Integer.parseInt(request.getParameter("flightStatus"))]);
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {

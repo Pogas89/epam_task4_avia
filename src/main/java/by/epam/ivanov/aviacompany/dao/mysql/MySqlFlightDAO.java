@@ -7,12 +7,14 @@ import by.epam.ivanov.aviacompany.entity.Flight;
 import by.epam.ivanov.aviacompany.entity.FlightStatus;
 import org.apache.log4j.Logger;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
     private Logger LOGGER = Logger.getLogger(MySqlFlightDAO.class);
@@ -26,12 +28,19 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
             flight.setDeparture(resultSet.getString("fl_departure"));
             flight.setDestination(resultSet.getString("fl_destination"));
             flight.setDate(resultSet.getDate("fl_date"));
-            flight.setTime(resultSet.getTime("fl_time"));
+            //Convert UTC Time in System TimeZone Time
+            DateFormat utcFormat = new SimpleDateFormat("HH:mm:ss");
+            utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+            DateFormat sysFormat = new SimpleDateFormat("HH:mm:ss");
+            sysFormat.setTimeZone(TimeZone.getDefault());
+            Date date = utcFormat.parse(resultSet.getTime("fl_time").toString());
+            LOGGER.info("Time---------------------------------->"+sysFormat.format(date));
+            flight.setTime(Time.valueOf(sysFormat.format(date)));
             flight.setStatus(FlightStatus.values()[resultSet.getInt("fl_statatus")]);
             flight.setCrew(new Crew());
             flight.getCrew().setId(resultSet.getInt("crew_id"));
             return flight;
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             LOGGER.error(e.getMessage());
             throw new DaoException(e);
         }
@@ -85,6 +94,7 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
         String sql = "UPDATE flight SET fl_name=?, fl_departure=?, fl_destination=?," +
                 "fl_date=?, fl_time=?, fl_statatus=?, crew_id=? WHERE fl_id=?;";
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
+            LOGGER.debug("------------------------>TIME:"+entity.getTime());
             statement.setString(1, entity.getName());
             statement.setString(2, entity.getDeparture());
             statement.setString(3, entity.getDestination());
