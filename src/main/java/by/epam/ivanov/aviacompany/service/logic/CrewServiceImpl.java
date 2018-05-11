@@ -80,4 +80,22 @@ public class CrewServiceImpl implements CrewService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public void addStaffInCrew(Integer crewId, Integer staffId) throws ServiceException {
+        try{
+            crewDAO.addStaffinCrew(crewId,staffId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void deleteStaffFromCrew(Integer crewId, Integer staffId) throws ServiceException {
+        try {
+            crewDAO.deleteStaffFromCrew(crewId,staffId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

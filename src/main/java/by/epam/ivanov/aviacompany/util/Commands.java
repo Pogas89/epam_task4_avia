@@ -18,4 +18,5 @@ public class Commands {
     public static final String CREWSAVE_COMMAND = "/dispetcher/crewsave.html";
     public static final String CREWSHOW_COMMAND = "/dispetcher/crewshow.html";
     public static final String ADDSTAFFINCREW_COMMAND = "/dispetcher/addstaffincrew.html";
+    public static final String DELSTAFFFROMCREW_COMMAND = "/dispetcher/deletefromcrew.html";
 }

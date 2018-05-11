@@ -35,6 +35,7 @@ class CommandMap {
         commandMap.put(Commands.CREWSAVE_COMMAND, new CrewSaveCommand());
         commandMap.put(Commands.CREWSHOW_COMMAND, new CrewShowCommand());
         commandMap.put(Commands.ADDSTAFFINCREW_COMMAND, new AddStaffInCrewCommand());
+        commandMap.put(Commands.DELSTAFFFROMCREW_COMMAND, new DeleteStaffFromCrewCommand());
 
         //todo: дописать остальные команды
     }

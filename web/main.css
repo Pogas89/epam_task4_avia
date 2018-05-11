@@ -77,6 +77,13 @@ a.show {
     background: url('show.png');
 }
 
+a.cancel {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('cancel.png');
+}
+
 #menu{
     width: 100%;
     background-color: aqua;

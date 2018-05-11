@@ -107,4 +107,28 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
             throw new DaoException(e);
         }
     }
+
+    @Override
+    public void addStaffinCrew(Integer crewId, Integer staffId) throws DaoException {
+        String sql = "INSERT INTO crew_staff VALUES (?,?);";
+        try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
+            statement.setInt(1, crewId);
+            statement.setInt(2, staffId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+    }
+
+    @Override
+    public void deleteStaffFromCrew(Integer crewId, Integer staffId) throws DaoException {
+        String sql = "DELETE FROM crew_staff WHERE cr_id=? AND st_id=?;";
+        try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
+            statement.setInt(1, crewId);
+            statement.setInt(2, staffId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -19,12 +19,20 @@
             <th><fmt:message key="crewshow.table.firstname"/></th>
             <th><fmt:message key="crewshow.table.lastname"/></th>
             <th><fmt:message key="crewshow.table.department"/></th>
+            <th><fmt:message key="crewshow.table.delete"/> </th>
         </tr>
         <c:forEach var="staff" items="${staffInCrew}">
             <tr>
                 <td>${staff.firstName}</td>
                 <td>${staff.lastName}</td>
                 <td><fmt:message key="${staff.department.name}"/></td>
+                <td>
+                    <c:url var="staffDelete" value="/dispetcher/deletefromcrew.html">
+                        <c:param name="staffId" value="${staff.id}"/>
+                        <c:param name="crewId" value="${crew.id}"/>
+                    </c:url>
+                    <a href="${staffDelete}" class="delete"></a>
+                </td>
             </tr>
         </c:forEach>
     </table>
@@ -32,14 +40,17 @@
     <hr>
     <c:url var="AddStaff" value="/dispetcher/addstaffincrew.html"/>
     <form action="${AddStaff}" method="post">
-        <label for="staff"><fmt:message key="crewshow.table.addstaff"/></label>
-        <select id="staff" name="staff">
+        <input name="crewId" value="${crew.id}" type="hidden">
+        <label for="staffId"><fmt:message key="crewshow.table.addstaff"/></label>
+        <select id="staffId" name="staffId">
             <c:forEach var="staff" items="${freeStaff}">
-                <option value="${staff.firstName} ${staff.lastName} ${staff.department.name}">
+                <option value="${staff.id}">
                         ${staff.firstName} ${staff.lastName} <fmt:message key="${staff.department.name}"/>
                 </option>
             </c:forEach>
         </select><br>
         <button class="add"><fmt:message key="crewshow.button.add"/></button>
     </form>
+    <c:url var="crewList" value="/dispetcher/crewlist.html"/><br>
+    <a href="${crewList}" class="cancel"></a>
 </u:dispetcher>

@@ -17,4 +17,8 @@ public interface CrewService {
     List<Staff> readFreeStaff() throws ServiceException;
 
     List<Staff> readStaffFromCrew(Integer id) throws ServiceException;
+
+    void addStaffInCrew(Integer crewId, Integer staffId) throws ServiceException;
+
+    void deleteStaffFromCrew(Integer crewId, Integer staffId) throws ServiceException;
 }
