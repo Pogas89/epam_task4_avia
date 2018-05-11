@@ -94,7 +94,6 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-
     }
 
     @Override

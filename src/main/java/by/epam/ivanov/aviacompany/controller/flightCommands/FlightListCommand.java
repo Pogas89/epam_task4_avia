@@ -1,9 +1,9 @@
-package by.epam.ivanov.aviacompany.controller.userCommands;
+package by.epam.ivanov.aviacompany.controller.flightCommands;
 
 import by.epam.ivanov.aviacompany.controller.Command;
-import by.epam.ivanov.aviacompany.entity.User;
+import by.epam.ivanov.aviacompany.entity.Flight;
+import by.epam.ivanov.aviacompany.service.FlightService;
 import by.epam.ivanov.aviacompany.service.ServiceException;
-import by.epam.ivanov.aviacompany.service.UserService;
 import by.epam.ivanov.aviacompany.util.Pages;
 import by.epam.ivanov.aviacompany.util.serviceFactory.ServiceFactoryException;
 import org.apache.log4j.Logger;
@@ -13,17 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-public class UserListCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(UserListCommand.class);
+public class FlightListCommand extends Command {
+    private Logger LOGGER = Logger.getLogger(FlightListCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        try{
-            UserService userService = getServiceFactory().getUserService();
-            List<User> userList = userService.readUsers();
-            request.setAttribute("userList", userList);
-            return Pages.USERLIST_PAGE;
-        } catch (ServiceException | ServiceFactoryException e) {
+        try {
+            FlightService service = getServiceFactory().getFlightService();
+            List<Flight> flightList = service.readFlights();
+            request.setAttribute("flightList", flightList);
+            return Pages.FLIGHTLIST_PAGE;
+        } catch (ServiceFactoryException | ServiceException e) {
             LOGGER.error(e.getMessage());
             throw new ServletException(e);
         }

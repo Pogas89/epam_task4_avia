@@ -1,6 +1,9 @@
 package by.epam.ivanov.aviacompany.controller;
 
 import by.epam.ivanov.aviacompany.controller.crewCommands.*;
+import by.epam.ivanov.aviacompany.controller.flightCommands.FlightEditCommand;
+import by.epam.ivanov.aviacompany.controller.flightCommands.FlightListCommand;
+import by.epam.ivanov.aviacompany.controller.flightCommands.FlightSaveCommand;
 import by.epam.ivanov.aviacompany.controller.staffCommands.StaffDeleteCommand;
 import by.epam.ivanov.aviacompany.controller.staffCommands.StaffEditCommand;
 import by.epam.ivanov.aviacompany.controller.staffCommands.StaffListCommand;
@@ -36,6 +39,9 @@ class CommandMap {
         commandMap.put(Commands.CREWSHOW_COMMAND, new CrewShowCommand());
         commandMap.put(Commands.ADDSTAFFINCREW_COMMAND, new AddStaffInCrewCommand());
         commandMap.put(Commands.DELSTAFFFROMCREW_COMMAND, new DeleteStaffFromCrewCommand());
+        commandMap.put(Commands.FLIGHTLIST_COMMAND, new FlightListCommand());
+        commandMap.put(Commands.FLIGHTEDIT_COMMAND, new FlightEditCommand());
+        commandMap.put(Commands.FLIGHTSAVE_COMMAND, new FlightSaveCommand());
 
         //todo: дописать остальные команды
     }

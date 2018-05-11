@@ -34,7 +34,9 @@ public class UserSaveCommand extends Command {
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             throw new ServletException(e);
         }
-        if (user.getLogin() != null && user.getUserRole() != null){
+        if (user.getLogin() != null && user.getPassword() != null
+                && user.getFirstName() != null && user.getLastName() != null
+                && user.getEmail() != null && user.getUserRole() != null) {
             try {
                 UserService userService = getServiceFactory().getUserService();
                 userService.save(user);

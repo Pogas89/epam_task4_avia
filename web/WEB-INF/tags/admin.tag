@@ -18,6 +18,9 @@
             <a href="/admin/userlist.html"><fmt:message key="userlist.title"/></a>
         </li>
         <li>
+            <a href="/admin/flightlist.html"><fmt:message key="flightlist.title"/></a>
+        </li>
+        <li>
             <a href="/admin/userlist.html">в никуда</a>
         </li>
         <c:if test="${not empty currentUser}">
