@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface FlightDAO extends DAO<Flight> {
     List<Flight> readAllFlights() throws DaoException;
+
+    List<Flight> readNewFlights() throws DaoException;
 }

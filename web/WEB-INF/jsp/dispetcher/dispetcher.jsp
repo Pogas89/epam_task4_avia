@@ -11,4 +11,4 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
 <fmt:message key="dispetcher.page.title" var="title"/>
-<u:dispetcher title="${title}"/>
+<u:tags title="${title}"/>

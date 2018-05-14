@@ -11,7 +11,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
 <fmt:message key="stafflist.title" var="title"/>
-<u:dispetcher title="${title}">
+<u:tags title="${title}">
     <h2>${title}</h2>
     <table>
         <tr>
@@ -42,4 +42,4 @@
         </c:forEach>
     </table>
     <a href="/dispetcher/staffedit.html" class="add"></a>
-</u:dispetcher>
+</u:tags>

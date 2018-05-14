@@ -64,7 +64,7 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
 
     @Override
     public Integer create(Flight entity) throws DaoException {
-        String sql="INSERT INTO flight " +
+        String sql = "INSERT INTO flight " +
                 "(fl_name, fl_departure, fl_destination, fl_date, fl_time, fl_statatus, crew_id)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?);";
         try (PreparedStatement statement = getConnection().
@@ -75,7 +75,11 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
             statement.setDate(4, entity.getDate());
             statement.setTime(5, entity.getTime());
             statement.setInt(6, entity.getStatus().ordinal());
-            statement.setInt(7, entity.getCrew().getId());
+            if (entity.getCrew() != null) {
+                statement.setInt(7, entity.getCrew().getId());
+            } else {
+                statement.setNull(7, Types.INTEGER);
+            }
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             Integer id = null;
@@ -90,8 +94,14 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
 
     @Override
     public void update(Flight entity) throws DaoException {
-        String sql = "UPDATE flight SET fl_name=?, fl_departure=?, fl_destination=?," +
-                "fl_date=?, fl_time=?, fl_statatus=?, crew_id=? WHERE fl_id=?;";
+        String sql;
+        if (entity.getCrew().getId() != 0) {
+            sql = "UPDATE flight SET fl_name=?, fl_departure=?, fl_destination=?," +
+                    "fl_date=?, fl_time=?, fl_statatus=?, crew_id=? WHERE fl_id=?;";
+        } else {
+            sql = "UPDATE flight SET fl_name=?, fl_departure=?, fl_destination=?," +
+                    "fl_date=?, fl_time=?, fl_statatus=? WHERE fl_id=?;";
+        }
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
             statement.setString(1, entity.getName());
             statement.setString(2, entity.getDeparture());
@@ -99,8 +109,12 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
             statement.setDate(4, entity.getDate());
             statement.setTime(5, entity.getTime());
             statement.setInt(6, entity.getStatus().ordinal());
-            statement.setInt(7, entity.getCrew().getId());
-            statement.setInt(8, entity.getId());
+            if (entity.getCrew().getId() != 0) {
+                statement.setInt(7, entity.getCrew().getId());
+                statement.setInt(8, entity.getId());
+            } else {
+                statement.setInt(7, entity.getId());
+            }
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -120,12 +134,30 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
 
     @Override
     public List<Flight> readAllFlights() throws DaoException {
-        String sql="SELECT * FROM flight;";
+        String sql = "SELECT * FROM flight;";
         Flight flight;
         List<Flight> flights = new ArrayList<>();
-        try(Statement statement = getConnection().createStatement()){
+        try (Statement statement = getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()){
+            while (resultSet.next()) {
+                flight = getFlightFromDB(resultSet);
+                flights.add(flight);
+            }
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return flights;
+    }
+
+    @Override
+    public List<Flight> readNewFlights() throws DaoException {
+        String sql = "SELECT * FROM flight WHERE fl_statatus=?;";
+        Flight flight;
+        List<Flight> flights = new ArrayList<>();
+        try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
+            statement.setInt(1, FlightStatus.NEW.ordinal());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
                 flight = getFlightFromDB(resultSet);
                 flights.add(flight);
             }

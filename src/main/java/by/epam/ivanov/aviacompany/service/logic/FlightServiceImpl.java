@@ -34,6 +34,15 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+    public List<Flight> readNewFlights() throws ServiceException {
+        try {
+            return flightDAO.readNewFlights();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void save(Flight flight) throws ServiceException {
         try{
             if(flight.getId()!=null){

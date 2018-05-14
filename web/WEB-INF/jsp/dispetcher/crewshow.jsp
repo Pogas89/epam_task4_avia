@@ -11,7 +11,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
 <fmt:message key="crewshow.title" var="title"/>
-<u:dispetcher title="${title}">
+<u:tags title="${title}">
     <h2>${title}</h2>
     <h3>${crew.name}:</h3>
     <table>
@@ -53,4 +53,4 @@
     </form>
     <c:url var="crewList" value="/dispetcher/crewlist.html"/><br>
     <a href="${crewList}" class="cancel"></a>
-</u:dispetcher>
+</u:tags>

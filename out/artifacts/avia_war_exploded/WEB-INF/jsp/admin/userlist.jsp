@@ -11,7 +11,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
 <fmt:message key="userlist.title" var="title"/>
-<u:admin title="${title}">
+<u:tags title="${title}">
     <h2>${title}</h2>
     <table>
         <tr>
@@ -46,4 +46,4 @@
         </c:forEach>
     </table>
     <a href="/admin/useredit.html" class="add"></a>
-</u:admin>
+</u:tags>

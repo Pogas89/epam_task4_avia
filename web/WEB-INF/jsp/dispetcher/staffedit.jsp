@@ -14,7 +14,7 @@
     <jsp:useBean id="staff" class="by.epam.ivanov.aviacompany.entity.Staff"/>
 </c:if>
 <fmt:message  var="title" key="${not empty staff.id?'staffedit.title.add':'staffedit.title.edit'}"/>
-<u:dispetcher title="${title}">
+<u:tags title="${title}">
     <h2>${title}</h2>
     <c:url var="StaffList" value="/dispetcher/stafflist.html"/>
     <c:url var="StaffSave" value="/dispetcher/staffsave.html"/>
@@ -38,4 +38,4 @@
             <fmt:message key="staffedit.button.cancel"/>
         </button>
     </form>
-</u:dispetcher>
+</u:tags>

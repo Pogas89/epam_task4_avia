@@ -7,11 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
 <fmt:message key="flightlist.title" var="title"/>
-<u:admin title="${title}">
+<u:tags title="${title}">
     <h2>${title}</h2>
     <table>
         <tr>
@@ -23,7 +23,9 @@
             <th><fmt:message key="flightlist.table.status"/></th>
             <th><fmt:message key="flightlist.table.crew"/></th>
             <th><fmt:message key="flightlist.button.edit"/></th>
-            <th><fmt:message key="flightlist.button.delete"/></th>
+            <c:if test="${sessionScope.currentUser.userRole.id==0}">
+                <th><fmt:message key="flightlist.button.delete"/></th>
+            </c:if>
         </tr>
         <c:forEach var="flight" items="${flightList}">
             <tr>
@@ -40,14 +42,18 @@
                     </c:url>
                     <a href="${flightEdit}" class="edit"></a>
                 </td>
-                <td>
-                    <c:url var="flightDelete" value="/admin/flightdelete.html">
-                        <c:param name="id" value="${flight.id}"/>
-                    </c:url>
-                    <a href="${flightDelete}" class="delete"></a>
-                </td>
+                <c:if test="${sessionScope.currentUser.userRole.id==0}">
+                    <td>
+                        <c:url var="flightDelete" value="/admin/flightdelete.html">
+                            <c:param name="id" value="${flight.id}"/>
+                        </c:url>
+                        <a href="${flightDelete}" class="delete"></a>
+                    </td>
+                </c:if>
             </tr>
         </c:forEach>
     </table>
-    <a href="/admin/flightedit.html" class="add"></a>
-</u:admin>
+    <c:if test="${sessionScope.currentUser.userRole.id==0}">
+        <a href="/admin/flightedit.html" class="add"></a>
+    </c:if>
+</u:tags>

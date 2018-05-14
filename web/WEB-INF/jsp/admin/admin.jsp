@@ -11,4 +11,4 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
 <fmt:message key="admin.page.title" var="title"/>
-<u:admin title="${title}"/>
+<u:tags title="${title}"/>

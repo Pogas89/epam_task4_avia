@@ -14,7 +14,7 @@
     <jsp:useBean id="user" class="by.epam.ivanov.aviacompany.entity.User"/>
 </c:if>
 <fmt:message var="title" key="${not empty user.id?'useredit.title.edit':'useredit.title.add'}"/>
-<u:admin title="${title}">
+<u:tags title="${title}">
     <h2>${title}</h2>
     <c:url var="UserList" value="/admin/userlist.html"/>
     <c:url var="UserSave" value="/admin/usersave.html"/>
@@ -44,4 +44,4 @@
             <fmt:message key="useredit.button.cancel"/>
         </button>
     </form>
-</u:admin>
+</u:tags>
