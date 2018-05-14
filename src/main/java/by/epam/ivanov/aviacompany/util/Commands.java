@@ -19,8 +19,8 @@ public class Commands {
     public static final String CREWSHOW_COMMAND = "/dispetcher/crewshow.html";
     public static final String ADDSTAFFINCREW_COMMAND = "/dispetcher/addstaffincrew.html";
     public static final String DELSTAFFFROMCREW_COMMAND = "/dispetcher/deletefromcrew.html";
-    public static final String FLIGHTLIST_COMMAND = "/admin/flightlist.html";
-    public static final String FLIGHTEDIT_COMMAND = "/admin/flightedit.html";
-    public static final String FLIGHTSAVE_COMMAND = "/admin/flightsave.html";
+    public static final String FLIGHTLIST_COMMAND = "/flightlist.html";
+    public static final String FLIGHTEDIT_COMMAND = "/flightedit.html";
+    public static final String FLIGHTSAVE_COMMAND = "/flightsave.html";
 
 }

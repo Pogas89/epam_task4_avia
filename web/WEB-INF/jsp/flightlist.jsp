@@ -37,14 +37,14 @@
                 <td><fmt:message key="${flight.status.name}"/></td>
                 <td>${flight.crew.name}</td>
                 <td>
-                    <c:url var="flightEdit" value="/admin/flightedit.html">
+                    <c:url var="flightEdit" value="/flightedit.html">
                         <c:param name="id" value="${flight.id}"/>
                     </c:url>
                     <a href="${flightEdit}" class="edit"></a>
                 </td>
                 <c:if test="${sessionScope.currentUser.userRole.id==0}">
                     <td>
-                        <c:url var="flightDelete" value="/admin/flightdelete.html">
+                        <c:url var="flightDelete" value="/flightdelete.html">
                             <c:param name="id" value="${flight.id}"/>
                         </c:url>
                         <a href="${flightDelete}" class="delete"></a>
@@ -54,6 +54,6 @@
         </c:forEach>
     </table>
     <c:if test="${sessionScope.currentUser.userRole.id==0}">
-        <a href="/admin/flightedit.html" class="add"></a>
+        <a href="${flightEdit}" class="add"></a>
     </c:if>
 </u:tags>

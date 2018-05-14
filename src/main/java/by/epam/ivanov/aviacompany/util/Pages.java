@@ -12,7 +12,7 @@ public class Pages {
     public static final String CREWSHOW_PAGE = "/WEB-INF/jsp/dispetcher/crewshow.jsp";
     public static final String ADMIN_PAGE = "/WEB-INF/jsp/admin/admin.jsp";
     public static final String DISPETCHER_PAGE = "/WEB-INF/jsp/dispetcher/dispetcher.jsp";
-    public static final String FLIGHTLIST_PAGE = "/WEB-INF/jsp/admin/flightlist.jsp";
-    public static final String FLIGHTEDIT_PAGE = "/WEB-INF/jsp/admin/flightedit.jsp";
+    public static final String FLIGHTLIST_PAGE = "/WEB-INF/jsp/flightlist.jsp";
+    public static final String FLIGHTEDIT_PAGE = "/WEB-INF/jsp/flightedit.jsp";
 
 }

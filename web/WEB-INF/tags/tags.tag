@@ -12,22 +12,27 @@
     <link href="${css}" rel="stylesheet">
 </head>
 <body>
+<c:url var="userList" value="/admin/userlist.html"/>
+<c:url var="flightList" value="/flightlist.html"/>
+<c:url var="staffList" value="/dispetcher/stafflist.html"/>
+<c:url var="crewList" value="/dispetcher/crewlist.html"/>
+<c:url var="logout" value="/logout.html"/>
 <c:choose>
     <c:when test="${sessionScope.currentUser.userRole.id==0}">
         <div id="menu">
             <ul>
                 <li>
-                    <a href="/admin/userlist.html"><fmt:message key="userlist.title"/></a>
+                    <a href="${userList}"><fmt:message key="userlist.title"/></a>
                 </li>
                 <li>
-                    <a href="/admin/flightlist.html"><fmt:message key="flightlist.title"/></a>
+                    <a href="${flightList}"><fmt:message key="flightlist.title"/></a>
                 </li>
                 <c:if test="${not empty currentUser}">
                     <li>
                         <fmt:message key="app.welcome"/>: ${currentUser.login}
                     </li>
                     <li>
-                        <a href="/logout.html"><fmt:message key="app.button.loguot"/></a>
+                        <a href="${logout}"><fmt:message key="app.button.loguot"/></a>
                     </li>
                 </c:if>
             </ul>
@@ -37,20 +42,20 @@
         <div id="menu">
             <ul>
                 <li>
-                    <a href="/dispetcher/stafflist.html"><fmt:message key="stafflist.title"/></a>
+                    <a href="${staffList}"><fmt:message key="stafflist.title"/></a>
                 </li>
                 <li>
-                    <a href="/dispetcher/crewlist.html"><fmt:message key="crewlist.title"/></a>
+                    <a href="${crewList}"><fmt:message key="crewlist.title"/></a>
                 </li>
                 <li>
-                    <a href="/admin/flightlist.html"><fmt:message key="flightlist.title"/></a>
+                    <a href="${flightList}"><fmt:message key="flightlist.title"/></a>
                 </li>
                 <c:if test="${not empty currentUser}">
                     <li>
                         <fmt:message key="app.welcome"/>: ${currentUser.login}
                     </li>
                     <li>
-                        <a href="/logout.html"><fmt:message key="app.button.loguot"/></a>
+                        <a href="${logout}"><fmt:message key="app.button.loguot"/></a>
                     </li>
                 </c:if>
             </ul>

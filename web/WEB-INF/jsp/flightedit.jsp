@@ -17,8 +17,8 @@
 <fmt:message var="title" key="${not empty flight.id?'flightedit.title.edit':'flightedit.title.add'}"/>
 <u:tags title="${title}">
     <h2>${title}</h2>
-    <c:url var="FlightList" value="/admin/flightlist.html"/>
-    <c:url var="FlightSave" value="/admin/flightsave.html"/>
+    <c:url var="FlightList" value="/flightlist.html"/>
+    <c:url var="FlightSave" value="/flightsave.html"/>
     <form action="${FlightSave}" method="post">
         <c:if test="${not empty flight.id}">
             <input name="id" value="${flight.id}" type="hidden">
@@ -57,16 +57,16 @@
             <c:when test="${sessionScope.currentUser.userRole.id==1}">
                 <label for="crewId"><fmt:message key="flightedit.form.crew"/></label>
                 <select id="crewId" name="crewId">
-                    <option/>
-                        <c:forEach var="crewId" items="${crewList}">
-                            <option value="${crewId.id}" ${crewId.id == flight.crew.id?
-                                    'selected' :''}>${crewId.name}</option>
-                        </c:forEach>
+                    <option selected disabled><fmt:message key="flightedit.form.crew.select"/></option>
+                    <c:forEach var="crewId" items="${crewList}">
+                        <option value="${crewId.id}" ${crewId.id == flight.crew.id?
+                                'selected' :''}>${crewId.name}</option>
+                    </c:forEach>
                 </select><br>
             </c:when>
         </c:choose>
         <button class="save"><fmt:message key="flightedit.button.save"/></button>
-        <button class="cancel" formnovalidate formaction="${FlightList}" formmethod="get">
+        <button class="cancel" formnovalidate formaction="${FlightList}" formmethod="post">
             <fmt:message key="flightedit.button.cancel"/>
         </button>
     </form>

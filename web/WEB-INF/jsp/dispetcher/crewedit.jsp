@@ -27,7 +27,7 @@
         <label><fmt:message key="crewedit.form.creater"/></label>
         <input type="text" name="user" id="${user.login}" value="${user.login}" disabled><br>
         <button class="save"><fmt:message key="crewedit.button.save"/></button>
-        <button class="cancel" formnovalidate formaction="${CrewList}" formmethod="get">
+        <button class="cancel" formnovalidate formaction="${CrewList}" formmethod="post">
             <fmt:message key="crewedit.button.cancel"/>
         </button>
     </form>

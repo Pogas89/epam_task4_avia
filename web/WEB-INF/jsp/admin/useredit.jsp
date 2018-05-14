@@ -40,7 +40,7 @@
             </c:forEach>
         </select><br>
         <button class="save"><fmt:message key="useredit.button.save"/></button>
-        <button class="cancel" formnovalidate formaction="${UserList}" formmethod="get">
+        <button class="cancel" formnovalidate formaction="${UserList}" formmethod="post">
             <fmt:message key="useredit.button.cancel"/>
         </button>
     </form>
