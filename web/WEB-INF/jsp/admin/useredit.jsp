@@ -22,15 +22,15 @@
         <c:if test="${not empty user.id}">
             <input name="id" value="${user.id}" type="hidden">
         </c:if>
-        <label><fmt:message key="useredit.form.login"/></label>
+        <label for="${user.login}"><fmt:message key="useredit.form.login"/></label>
         <input type="text" name="login" id="${user.login}" value="${user.login}" required><br>
-        <label><fmt:message key="useredit.form.password"/></label>
+        <label for="${user.password}"><fmt:message key="useredit.form.password"/></label>
         <input type="password" name="password" id="${user.password}" value="${user.password}" required><br>
-        <label><fmt:message key="useredit.form.firstname"/></label>
+        <label for="${user.firstName}"><fmt:message key="useredit.form.firstname"/></label>
         <input type="text" name="firstName" id="${user.firstName}" value="${user.firstName}" required><br>
-        <label><fmt:message key="useredit.form.lastname"/></label>
+        <label for="${user.lastName}"><fmt:message key="useredit.form.lastname"/></label>
         <input type="text" name="lastName" id="${user.lastName}" value="${user.lastName}" required><br>
-        <label><fmt:message key="useredit.form.email"/></label>
+        <label for="${user.email}"><fmt:message key="useredit.form.email"/></label>
         <input type="email" name="email" id="${user.email}" value=" ${user.email}" required><br>
         <label for="userRole"><fmt:message key="useredit.form.userrole"/></label>
         <select id="userRole" name="userRole">

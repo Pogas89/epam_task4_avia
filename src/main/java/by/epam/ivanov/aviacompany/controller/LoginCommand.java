@@ -27,9 +27,9 @@ public class LoginCommand extends Command {
                 if (user != null && password.equals(user.getPassword())) {
                     HttpSession session = request.getSession();
                     session.setAttribute("currentUser", user);
-                    if(user.getUserRole().equals(UserRole.ADMIN)){
+                    if (user.getUserRole().equals(UserRole.ADMIN)) {
                         return Pages.ADMIN_PAGE;
-                    } else if(user.getUserRole().equals(UserRole.DISPETCHER)){
+                    } else if (user.getUserRole().equals(UserRole.DISPETCHER)) {
                         return Pages.DISPETCHER_PAGE;
                     }
                 } else {

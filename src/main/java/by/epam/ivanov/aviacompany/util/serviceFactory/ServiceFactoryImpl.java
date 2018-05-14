@@ -24,8 +24,7 @@ import java.sql.SQLException;
 
 public class ServiceFactoryImpl implements ServiceFactory {
     private Logger LOGGER = Logger.getLogger(ServiceFactoryImpl.class);
-    ConnectionPool pool;
-    Connection connection;
+    private Connection connection;
 
     @Override
     public UserService getUserService() throws ServiceFactoryException {
@@ -57,12 +56,14 @@ public class ServiceFactoryImpl implements ServiceFactory {
 
     @Override
     public Connection getConnection() throws ServiceFactoryException {
-        try {
-            pool = ConnectionPool.getInstance();
-            connection = pool.getConnection();
-        } catch (SQLException | ClassNotFoundException e) {
-            LOGGER.error(e.getMessage());
-            e.printStackTrace();
+        if(connection==null) {
+            try {
+                ConnectionPool pool = ConnectionPool.getInstance();
+                connection = pool.getConnection();
+            } catch (SQLException | ClassNotFoundException e) {
+                LOGGER.error(e.getMessage());
+                e.printStackTrace();
+            }
         }
         return connection;
     }

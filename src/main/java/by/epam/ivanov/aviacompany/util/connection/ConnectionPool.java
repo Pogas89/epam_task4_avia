@@ -58,6 +58,7 @@ public class ConnectionPool {
     private synchronized void destroy() {
         for (PooledConnection connection : free) {
             try {
+                LOGGER.debug("free connection destroyed " + connection);
                 connection.getRawConnection().close();
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());
@@ -65,6 +66,7 @@ public class ConnectionPool {
         }
         for (PooledConnection connection : used) {
             try {
+                LOGGER.debug("used connection destroyed " + connection);
                 connection.getRawConnection().close();
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());
@@ -77,8 +79,10 @@ public class ConnectionPool {
 
         if (free.size() > 0) {
             connection = free.remove(free.size() - 1);
+            LOGGER.debug("Get free connection " + connection);
         } else if (used.size() < maxPool) {
             connection = createConnectionWrapper();
+            LOGGER.debug("Create connection(haven't free) " + connection);
         } else {
             throw new RuntimeException("Can not create connection");
         }
@@ -111,5 +115,6 @@ public class ConnectionPool {
     void freeConnectionWrapper(PooledConnection connection) {
         used.remove(connection);
         free.add(connection);
+        LOGGER.debug("free connection " + connection);
     }
 }

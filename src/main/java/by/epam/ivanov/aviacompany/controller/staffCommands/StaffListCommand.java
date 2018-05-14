@@ -21,9 +21,6 @@ public class StaffListCommand extends Command {
         try {
             StaffService staffService = getServiceFactory().getStaffService();
             List<Staff> staffList = staffService.readStaffs();
-            for (Staff st:staffList) {
-                LOGGER.info(st.getId());
-            }
             request.setAttribute("staffList", staffList);
             return Pages.STAFFLIST_PAGE;
         } catch (ServiceFactoryException | ServiceException e) {

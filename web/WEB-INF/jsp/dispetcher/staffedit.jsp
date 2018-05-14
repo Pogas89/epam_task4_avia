@@ -22,15 +22,15 @@
         <c:if test="${not empty staff.id}">
             <input name="id" value="${staff.id}" type="hidden">
         </c:if>
-        <label><fmt:message key="staffedit.form.firstname"/></label>
+        <label for="${staff.firstName}"><fmt:message key="staffedit.form.firstname"/></label>
         <input type="text" name="firstName" id="${staff.firstName}" value="${staff.firstName}" required><br>
-        <label><fmt:message key="staffedit.form.lastname"/></label>
+        <label for="${staff.lastName}"><fmt:message key="staffedit.form.lastname"/></label>
         <input type="text" name="lastName" id="${staff.lastName}" value="${staff.lastName}" required><br>
         <label for="department"><fmt:message key="staffedit.form.department"/></label>
         <select id="department" name="department">
             <c:forEach var="department" items="${departments}">
-                <option value="${department.id}" ${department.id == staff.department.id} ?
-                'selected' :'' ><fmt:message key="${department.name}"/></option>
+                <option value="${department.id}"
+                    ${department.id == staff.department.id} ? 'selected' :'' ><fmt:message key="${department.name}"/></option>
             </c:forEach>
         </select><br>
         <button class="save"><fmt:message key="staffedit.button.save"/></button>

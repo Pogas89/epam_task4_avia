@@ -22,7 +22,7 @@
         <c:if test="${not empty crew.id}">
             <input name="id" value="${crew.id}" type="hidden">
         </c:if>
-        <label><fmt:message key="crewedit.form.name"/></label>
+        <label for="${crew.name}"><fmt:message key="crewedit.form.name"/></label>
         <input type="text" name="name" id="${crew.name}" value="${crew.name}" required><br>
         <label><fmt:message key="crewedit.form.creater"/></label>
         <input type="text" name="user" id="${user.login}" value="${user.login}" disabled><br>

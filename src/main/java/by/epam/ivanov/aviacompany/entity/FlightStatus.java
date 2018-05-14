@@ -1,6 +1,7 @@
 package by.epam.ivanov.aviacompany.entity;
 
 public enum FlightStatus {
+    NEW("flightstatus.new"),
     OPENED("flightstatus.opened"),
     CLOSED("flightstatus.closed"),
     CANCELED("flightstatus.canceled");

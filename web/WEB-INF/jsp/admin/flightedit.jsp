@@ -23,15 +23,15 @@
         <c:if test="${not empty flight.id}">
             <input name="id" value="${flight.id}" type="hidden">
         </c:if>
-        <label><fmt:message key="flightedit.form.name"/></label>
+        <label for="${flight.name}"><fmt:message key="flightedit.form.name"/></label>
         <input type="text" name="name" id="${flight.name}" value="${flight.name}" required><br>
-        <label><fmt:message key="flightedit.form.departure"/></label>
+        <label for="${flight.departure}"><fmt:message key="flightedit.form.departure"/></label>
         <input type="text" name="departure" id="${flight.departure}" value="${flight.departure}" required><br>
-        <label><fmt:message key="flightedit.form.destination"/></label>
+        <label for="${flight.destination}"><fmt:message key="flightedit.form.destination"/></label>
         <input type="text" name="destination" id="${flight.destination}" value="${flight.destination}" required><br>
-        <label><fmt:message key="flightedit.form.date"/></label>
+        <label for="${flight.date}"><fmt:message key="flightedit.form.date"/></label>
         <input type="date" name="date" id="${flight.date}" value="${flight.date}" required><br>
-        <label><fmt:message key="flightedit.form.time"/></label>
+        <label for="${flight.time}"><fmt:message key="flightedit.form.time"/></label>
         <input type="time" name="time" id="${flight.time}" value="${fn:substring(flight.time,0 ,5)}" required><br>
         <label for="flightStatus"><fmt:message key="flightedit.form.status"/></label>
         <select id="flightStatus" name="flightStatus">
@@ -40,7 +40,7 @@
                         'selected' :''}><fmt:message key="${flightStatus.name}"/></option>
             </c:forEach>
         </select><br>
-        <label><fmt:message key="flightedit.form.crew"/></label>
+        <label for="crewId"><fmt:message key="flightedit.form.crew"/></label>
         <select id="crewId" name="crewId">
             <c:forEach var="crewId" items="${crewList}">
                 <option value="${crewId.id}" ${crewId.id == flight.crew.id?

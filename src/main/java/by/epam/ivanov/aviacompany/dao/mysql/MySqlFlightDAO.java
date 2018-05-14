@@ -34,7 +34,6 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
             DateFormat sysFormat = new SimpleDateFormat("HH:mm:ss");
             sysFormat.setTimeZone(TimeZone.getDefault());
             Date date = utcFormat.parse(resultSet.getTime("fl_time").toString());
-            LOGGER.info("Time---------------------------------->"+sysFormat.format(date));
             flight.setTime(Time.valueOf(sysFormat.format(date)));
             flight.setStatus(FlightStatus.values()[resultSet.getInt("fl_statatus")]);
             flight.setCrew(new Crew());
@@ -94,7 +93,6 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
         String sql = "UPDATE flight SET fl_name=?, fl_departure=?, fl_destination=?," +
                 "fl_date=?, fl_time=?, fl_statatus=?, crew_id=? WHERE fl_id=?;";
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
-            LOGGER.debug("------------------------>TIME:"+entity.getTime());
             statement.setString(1, entity.getName());
             statement.setString(2, entity.getDeparture());
             statement.setString(3, entity.getDestination());
