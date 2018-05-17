@@ -22,6 +22,7 @@ public class CrewListCommand extends Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
+            LOGGER.debug("in crew list command");
             CrewService crewService = getServiceFactory().getCrewService();
             List<Crew> crewList = crewService.readCrews();
             if(!crewList.isEmpty()){
@@ -55,11 +56,12 @@ public class CrewListCommand extends Command {
         }
         request.setAttribute("maxPages" , listHolder.getNumberOfPages());
         String url = request.getRequestURI();
-        request.setAttribute("currentPage", url + "?action=page");
+        LOGGER.debug("url = " + url);
+        request.setAttribute("currentPage", url);
         if (page < 1 || page > listHolder.getNumberOfPages())
             page = 1;
         request.setAttribute("page", page);
         listHolder.setPage(page-1);
-        request.setAttribute("crewList", listHolder);
+        request.setAttribute("crewList", listHolder.getPageList());
     }
 }
