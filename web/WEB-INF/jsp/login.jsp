@@ -20,7 +20,7 @@
 <body>
 <h2>${title}</h2>
 <c:if test="${not empty param.message}">
-    <p class="error"><fmt:message key="login.error.incorrect"/></p>
+    <p><fmt:message key="${param.message}"/></p>
 </c:if>
 <c:url var="login" value="/login.html"/>
 <form action="${login}" method="post">

@@ -27,13 +27,14 @@ public class LoginCommand extends Command {
                 if (user != null && password.equals(user.getPassword())) {
                     HttpSession session = request.getSession();
                     session.setAttribute("currentUser", user);
+                    LOGGER.info("user authorized:" + user.getLogin() + " with role: " + user.getUserRole() );
                     if (user.getUserRole().equals(UserRole.ADMIN)) {
                         return Pages.ADMIN_PAGE;
                     } else if (user.getUserRole().equals(UserRole.DISPETCHER)) {
                         return Pages.DISPETCHER_PAGE;
                     }
                 } else {
-                    return Pages.LOGIN_PAGE + "?message=Login or password incorrect";
+                    return Pages.LOGIN_PAGE + "?message=app.login.incorrect";
                 }
             } catch (ServiceFactoryException | ServiceException e) {
                 LOGGER.error(e.getMessage());

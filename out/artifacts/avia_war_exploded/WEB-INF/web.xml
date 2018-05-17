@@ -38,6 +38,22 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>by.epam.ivanov.aviacompany.controller.filters.SecurityFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>by.epam.ivanov.aviacompany.util.SessionListner</listener-class>
+    </listener>
+
     <listener>
         <listener-class>by.epam.ivanov.aviacompany.util.Log4jInit</listener-class>
     </listener>
