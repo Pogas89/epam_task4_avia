@@ -21,11 +21,10 @@
             <th><fmt:message key="crewlist.button.delete"/></th>
             <th><fmt:message key="crewlist.button.show"/></th>
         </tr>
-        <c:forEach var="crew" items="${requestScope.crewList}">
-            <jsp:useBean id="crew" scope="page" type="by.epam.ivanov.aviacompany.entity.Crew"/>
+        <c:forEach var="crew" items="${crewList}">
             <tr>
                 <td>${crew.name}</td>
-                <td>${crew.user.login}</td>
+                <td>${crew.user.login}</td><!-- todo: не работает, подтянуть usera создателя -->
                 <td class="empty">
                     <c:url var="crewEdit" value="/dispetcher/crewedit.html">
                         <c:param name="id" value="${crew.id}"/>
