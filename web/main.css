@@ -115,3 +115,17 @@ a.cancel {
     margin-left: 18px;
     padding: 0;
 }
+
+
+.pagin {
+    margin-left: 100px;
+    margin-bottom: 5px;
+    color: red;
+}
+
+.btn-info {
+    background-color: rgba(24, 33, 52, 0.5);
+    color: white;
+    border: none;
+    border-radius: 20%;
+}
