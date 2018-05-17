@@ -24,7 +24,7 @@
         <c:forEach var="crew" items="${crewList}">
             <tr>
                 <td>${crew.name}</td>
-                <td>${crew.user.login}</td><!-- todo: не работает, подтянуть usera создателя -->
+                <td>${crew.user.login}</td>
                 <td class="empty">
                     <c:url var="crewEdit" value="/dispetcher/crewedit.html">
                         <c:param name="id" value="${crew.id}"/>

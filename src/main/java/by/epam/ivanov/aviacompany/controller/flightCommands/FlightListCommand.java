@@ -8,6 +8,7 @@ import by.epam.ivanov.aviacompany.entity.UserRole;
 import by.epam.ivanov.aviacompany.service.CrewService;
 import by.epam.ivanov.aviacompany.service.FlightService;
 import by.epam.ivanov.aviacompany.service.ServiceException;
+import by.epam.ivanov.aviacompany.util.PagedListHolderImpl;
 import by.epam.ivanov.aviacompany.util.Pages;
 import by.epam.ivanov.aviacompany.util.serviceFactory.ServiceFactoryException;
 import org.apache.log4j.Logger;
@@ -43,7 +44,9 @@ public class FlightListCommand extends Command {
                     crew = crewService.readById(id);
                     f.setCrew(crew);
                 }
-                request.setAttribute("flightList", flightList);
+                PagedListHolderImpl<Flight> listHolder = new PagedListHolderImpl<>(flightList);
+                listHolder.setAttribut("flightList");
+                listHolder.setPadding(request);
             }
             return Pages.FLIGHTLIST_PAGE;
         } catch (ServiceFactoryException | ServiceException e) {

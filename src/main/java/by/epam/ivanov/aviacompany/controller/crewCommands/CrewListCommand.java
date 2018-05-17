@@ -37,31 +37,13 @@ public class CrewListCommand extends Command {
                 }
 
             }
-            setPadding(request,crewList);
-            //request.setAttribute("crewList", crewList);
+            PagedListHolderImpl<Crew> listHolder = new PagedListHolderImpl<>(crewList);
+            listHolder.setAttribut("crewList");
+            listHolder.setPadding(request);
             return Pages.CREWLIST_PAGE;
         } catch (ServiceFactoryException | ServiceException e) {
             LOGGER.error(e.getMessage());
             throw new ServletException(e);
         }
-    }
-
-    private void setPadding(HttpServletRequest request, List<Crew> list){
-        PagedListHolderImpl<Crew> listHolder = new PagedListHolderImpl<>(list);
-        listHolder.setList(list);
-        Integer page = 0;
-        try{
-            page = Integer.parseInt(request.getParameter("page"));
-        } catch (NumberFormatException e){
-        }
-        request.setAttribute("maxPages" , listHolder.getNumberOfPages());
-        String url = request.getRequestURI();
-        LOGGER.debug("url = " + url);
-        request.setAttribute("currentPage", url);
-        if (page < 1 || page > listHolder.getNumberOfPages())
-            page = 1;
-        request.setAttribute("page", page);
-        listHolder.setPage(page-1);
-        request.setAttribute("crewList", listHolder.getPageList());
     }
 }

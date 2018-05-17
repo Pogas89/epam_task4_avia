@@ -4,6 +4,7 @@ import by.epam.ivanov.aviacompany.controller.Command;
 import by.epam.ivanov.aviacompany.entity.Staff;
 import by.epam.ivanov.aviacompany.service.ServiceException;
 import by.epam.ivanov.aviacompany.service.StaffService;
+import by.epam.ivanov.aviacompany.util.PagedListHolderImpl;
 import by.epam.ivanov.aviacompany.util.Pages;
 import by.epam.ivanov.aviacompany.util.serviceFactory.ServiceFactoryException;
 import org.apache.log4j.Logger;
@@ -21,7 +22,9 @@ public class StaffListCommand extends Command {
         try {
             StaffService staffService = getServiceFactory().getStaffService();
             List<Staff> staffList = staffService.readStaffs();
-            request.setAttribute("staffList", staffList);
+            PagedListHolderImpl<Staff> listHolder = new PagedListHolderImpl<>(staffList);
+            listHolder.setAttribut("staffList");
+            listHolder.setPadding(request);
             return Pages.STAFFLIST_PAGE;
         } catch (ServiceFactoryException | ServiceException e) {
             LOGGER.error(e.getMessage());
