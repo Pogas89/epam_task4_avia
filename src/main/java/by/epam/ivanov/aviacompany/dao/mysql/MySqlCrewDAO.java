@@ -98,7 +98,7 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
 
     @Override
     public void delete(Integer id) throws DaoException {
-        String sql = "DELETE FROM staff WHERE id=?;";
+        String sql = "DELETE FROM staff WHERE st_id=?;";
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
             statement.setInt(1, id);
             statement.executeUpdate();
@@ -120,7 +120,7 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
     }
 
     @Override
-    public void deleteStaffFromCrew(Integer crewId, Integer staffId) throws DaoException {
+    public void deleteStaffFromCrew(Integer crewId, Integer staffId){
         String sql = "DELETE FROM crew_staff WHERE cr_id=? AND st_id=?;";
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
             statement.setInt(1, crewId);

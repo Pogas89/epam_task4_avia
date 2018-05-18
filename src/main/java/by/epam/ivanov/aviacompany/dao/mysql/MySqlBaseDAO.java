@@ -5,7 +5,7 @@ import java.sql.Connection;
 public class MySqlBaseDAO {
     private Connection connection;
 
-    public Connection getConnection() {
+    Connection getConnection() {
         return connection;
     }
 

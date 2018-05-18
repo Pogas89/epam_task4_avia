@@ -11,7 +11,7 @@ public enum UserRole {
     }
 
     public Integer getId(){
-        return Integer.valueOf(ordinal());
+        return ordinal();
     }
 
     public String getName() {
