@@ -70,8 +70,8 @@ public class MySqlUserDAO extends MySqlBaseDAO implements UserDAO {
 
     @Override
     public List<User> getUsers() throws DaoException {
-        String sql = "SELECT * FROM user;";
-        List<User> users = new ArrayList();
+        String sql = "SELECT * FROM user ORDER BY us_login;";
+        List<User> users = new ArrayList<>();
         User user;
         try (Statement statement = getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);

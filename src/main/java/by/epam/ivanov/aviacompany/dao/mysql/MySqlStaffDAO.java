@@ -51,7 +51,7 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
 
     @Override
     public Staff readByLastName(String lastName) throws DaoException {
-        String sql = "SELECT * FROM staff WHERE st_Lname =?;";
+        String sql = "SELECT * FROM staff WHERE st_Lname =? ORDER BY st_Fname;";
         Staff staff = null;
         try (PreparedStatement statement =
                      getConnection().prepareStatement(sql)) {
@@ -69,7 +69,7 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
 
     @Override
     public List<Staff> getStaffs() throws DaoException {
-        String sql = "SELECT * FROM staff;";
+        String sql = "SELECT * FROM staff ORDER BY st_Lname, st_Fname;";
         List<Staff> staffList = new ArrayList<>();
         Staff staff;
         try (Statement statement = getConnection().createStatement()) {
@@ -159,7 +159,7 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
 
     @Override
     public List<Staff> getFreeStaffs() throws DaoException {
-        String sql = "SELECT staff.* FROM staff WHERE st_id NOT IN (SELECT crew_staff.st_id FROM crew_staff);";
+        String sql = "SELECT staff.* FROM staff WHERE st_id NOT IN (SELECT crew_staff.st_id FROM crew_staff) ORDER BY st_Lname,st_Fname;";
         List<Staff> freeStaff = new ArrayList<>();
         Staff staff;
         try (Statement statement = getConnection().createStatement()) {

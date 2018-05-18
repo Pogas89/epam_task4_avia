@@ -134,7 +134,7 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
 
     @Override
     public List<Flight> readAllFlights() throws DaoException {
-        String sql = "SELECT * FROM flight;";
+        String sql = "SELECT * FROM flight ORDER BY fl_date DESC , fl_time DESC;";
         Flight flight;
         List<Flight> flights = new ArrayList<>();
         try (Statement statement = getConnection().createStatement()) {
@@ -151,7 +151,7 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
 
     @Override
     public List<Flight> readNewFlights() throws DaoException {
-        String sql = "SELECT * FROM flight WHERE fl_statatus=?;";
+        String sql = "SELECT * FROM flight WHERE fl_statatus=? ORDER BY fl_date DESC , fl_time DESC;";
         Flight flight;
         List<Flight> flights = new ArrayList<>();
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {

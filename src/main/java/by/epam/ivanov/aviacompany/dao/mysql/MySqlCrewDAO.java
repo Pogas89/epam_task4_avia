@@ -18,7 +18,7 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
 
     @Override
     public List<Crew> getCrews() throws DaoException {
-        String sql = "SELECT * FROM crew;";
+        String sql = "SELECT * FROM crew ORDER BY cr_name;";
         List<Crew> crewList = new ArrayList<>();
         Crew crew;
         try (Statement statement = getConnection().createStatement()) {

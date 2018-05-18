@@ -17,6 +17,8 @@
 <c:url var="staffList" value="/dispetcher/stafflist.html"/>
 <c:url var="crewList" value="/dispetcher/crewlist.html"/>
 <c:url var="logout" value="/logout.html"/>
+
+<%--@elvariable id="currentUser" type="by.epam.ivanov.aviacompany.entity.User"--%>
 <c:choose>
     <c:when test="${sessionScope.currentUser.userRole.id==0}">
         <div id="menu">
@@ -29,7 +31,7 @@
                 </li>
                 <c:if test="${not empty currentUser}">
                     <li>
-                        <fmt:message key="app.welcome"/>: ${currentUser.login}
+                        <fmt:message key="app.welcome"/> ${currentUser.login}
                     </li>
                     <li>
                         <a href="${logout}"><fmt:message key="app.button.loguot"/></a>

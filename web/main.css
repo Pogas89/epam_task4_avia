@@ -93,10 +93,11 @@ a.cancel {
 
 #menu li{
     display: inline-block;
+    color: black;
 }
 
 #menu a:link, #menu a:visited{
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
     display: block;
     padding: 0 18px;
@@ -106,7 +107,7 @@ a.cancel {
 }
 
 #menu a:hover{
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
     background-color: aquamarine;
 }
@@ -120,7 +121,7 @@ a.cancel {
 .pagin {
     margin-left: 100px;
     margin-bottom: 5px;
-    color: red;
+    color: black;
 }
 
 .btn-info {

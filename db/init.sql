@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `aviacompany`.`staff` (
   `st_Fname` VARCHAR(45) NOT NULL,
   `st_Lname` VARCHAR(45) NOT NULL,
   `department` TINYINT NOT NULL,
+  `isArchive` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`st_id`))
   ENGINE = InnoDB;
 
@@ -29,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `aviacompany`.`user` (
   `us_Lname` VARCHAR(45) NOT NULL,
   `us_email` VARCHAR(20) NOT NULL,
   `us_role` TINYINT NOT NULL,
+  `isArchive` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `login_UNIQUE` (`us_login` ASC))
   ENGINE = InnoDB;
@@ -43,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `aviacompany`.`crew` (
   `cr_id` INT NOT NULL AUTO_INCREMENT,
   `cr_name` VARCHAR(45) NOT NULL,
   `user_id` INT NOT NULL,
+  `isArchive` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`cr_id`),
   INDEX `user_id_idx` (`user_id` ASC),
   CONSTRAINT `user_id`
@@ -65,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `aviacompany`.`flight` (
   `fl_time` TIME NOT NULL,
   `fl_statatus` TINYINT NOT NULL,
   `crew_id` INT NULL,
+  `isArchive` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`fl_id`),
   INDEX `crew_id_idx` (`crew_id` ASC),
   CONSTRAINT `crew_id`
