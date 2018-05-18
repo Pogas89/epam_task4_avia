@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class FlightListCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(FlightListCommand.class);
+    private final Logger LOGGER = Logger.getLogger(FlightListCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

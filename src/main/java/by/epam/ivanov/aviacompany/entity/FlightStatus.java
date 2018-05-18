@@ -6,7 +6,7 @@ public enum FlightStatus {
     CLOSED("flightstatus.closed"),
     CANCELED("flightstatus.canceled");
 
-    private String name;
+    private final String name;
 
     FlightStatus(String name){
         this.name = name;

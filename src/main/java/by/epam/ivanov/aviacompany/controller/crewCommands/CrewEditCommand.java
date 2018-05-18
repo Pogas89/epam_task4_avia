@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class CrewEditCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(CrewEditCommand.class);
+    private final Logger LOGGER = Logger.getLogger(CrewEditCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

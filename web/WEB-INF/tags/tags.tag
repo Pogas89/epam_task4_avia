@@ -17,6 +17,9 @@
 <c:url var="staffList" value="/dispetcher/stafflist.html"/>
 <c:url var="crewList" value="/dispetcher/crewlist.html"/>
 <c:url var="logout" value="/logout.html"/>
+<c:url var="changeUserData" value="/admin/useredit.html">
+    <c:param name="id" value="${currentUser.id}"/>
+</c:url>
 
 <%--@elvariable id="currentUser" type="by.epam.ivanov.aviacompany.entity.User"--%>
 <c:choose>
@@ -32,6 +35,9 @@
                 <c:if test="${not empty currentUser}">
                     <li>
                         <fmt:message key="app.welcome"/> ${currentUser.login}
+                    </li>
+                    <li>
+                        <a href="${changeUserData}"><fmt:message key="app.changepass"/></a>
                     </li>
                     <li>
                         <a href="${logout}"><fmt:message key="app.button.loguot"/></a>
@@ -55,6 +61,9 @@
                 <c:if test="${not empty currentUser}">
                     <li>
                         <fmt:message key="app.welcome"/>: ${currentUser.login}
+                    </li>
+                    <li>
+                        <a href="${changeUserData}"><fmt:message key="app.changepass"/></a>
                     </li>
                     <li>
                         <a href="${logout}"><fmt:message key="app.button.loguot"/></a>

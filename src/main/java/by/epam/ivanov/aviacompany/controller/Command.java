@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public abstract class Command {
-    private static Logger LOGGER = Logger.getLogger(Command.class);
+    private static final Logger LOGGER = Logger.getLogger(Command.class);
     private ServiceFactory serviceFactory;
 
-    public ServiceFactory getServiceFactory() {
+    protected ServiceFactory getServiceFactory() {
         LOGGER.debug("Command-GetServiceFactory");
         return serviceFactory;
     }

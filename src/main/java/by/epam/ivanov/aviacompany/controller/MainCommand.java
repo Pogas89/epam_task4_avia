@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class MainCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(MainCommand.class);
+    private final Logger LOGGER = Logger.getLogger(MainCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

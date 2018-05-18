@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
-    private Logger LOGGER = Logger.getLogger(MySqlFlightDAO.class);
+    private final Logger LOGGER = Logger.getLogger(MySqlFlightDAO.class);
 
     private Flight getFlightFromDB(ResultSet resultSet) throws DaoException {
         Flight flight;

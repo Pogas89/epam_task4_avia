@@ -23,7 +23,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ServiceFactoryImpl implements ServiceFactory {
-    private Logger LOGGER = Logger.getLogger(ServiceFactoryImpl.class);
+    private final Logger LOGGER = Logger.getLogger(ServiceFactoryImpl.class);
     private Connection connection;
 
     @Override

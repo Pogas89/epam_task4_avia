@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class MySqlBaseDAO {
-    private static Logger LOGGER = Logger.getLogger(MySqlBaseDAO.class);
+    private static final Logger LOGGER = Logger.getLogger(MySqlBaseDAO.class);
     private Connection connection;
 
     Connection getConnection() {
@@ -19,7 +19,7 @@ public class MySqlBaseDAO {
         this.connection = connection;
     }
 
-    protected void changeToArchive(String sql, Integer id) throws DaoException{
+    void changeToArchive(String sql, Integer id) throws DaoException{
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
             statement.setInt(1, id);
             statement.executeUpdate();

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class PagedListHolderImpl<T> {
-    private static Logger LOGGER = Logger.getLogger(PagedListHolderImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(PagedListHolderImpl.class);
     private List<T> list;
     private Integer pageSize;
     private int page;
@@ -21,7 +21,7 @@ public class PagedListHolderImpl<T> {
         this.attribut = attribut;
     }
 
-    public List<T> getList() {
+    List<T> getList() {
         return list;
     }
 
@@ -29,7 +29,7 @@ public class PagedListHolderImpl<T> {
         this.list = list;
     }
 
-    public Integer getPageSize() {
+    Integer getPageSize() {
         return pageSize;
     }
 
@@ -37,15 +37,15 @@ public class PagedListHolderImpl<T> {
         this.pageSize = pageSize;
     }
 
-    public int getPage() {
+    int getPage() {
         return page;
     }
 
-    public void setPage(int page) {
+    private void setPage(int page) {
         this.page = page;
     }
 
-    public List<T> getPageList() {
+    private List<T> getPageList() {
         return this.getList().subList(this.getFirstElementOfPage(), this.getLastElementOfPage() + 1);
     }
 
@@ -59,7 +59,7 @@ public class PagedListHolderImpl<T> {
         return this.getPageSize() * this.getPage();
     }
 
-    public int getNumberOfPages() {
+    private int getNumberOfPages() {
         return (int) Math.ceil((double) this.list.size() / this.getPageSize());
     }
 

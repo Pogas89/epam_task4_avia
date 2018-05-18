@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import java.util.List;
 
 public class StaffServiceImpl implements StaffService {
-    private static Logger LOGGER = Logger.getLogger(StaffServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(StaffServiceImpl.class);
     private StaffDAO staffDAO;
 
     public void setStaffDAO(StaffDAO staffDAO) {

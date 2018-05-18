@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static by.epam.ivanov.aviacompany.util.Pages.ERROR_PAGE;
 
 public class Controller extends HttpServlet {
-    private static Logger LOGGER = Logger.getLogger(Controller.class);
+    private static final Logger LOGGER = Logger.getLogger(Controller.class);
     private ConnectionPool pool;
 
     private void procces(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

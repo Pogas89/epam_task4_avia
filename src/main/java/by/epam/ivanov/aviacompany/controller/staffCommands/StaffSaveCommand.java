@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class StaffSaveCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(StaffSaveCommand.class);
+    private final Logger LOGGER = Logger.getLogger(StaffSaveCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class LoginCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(LoginCommand.class);
+    private final Logger LOGGER = Logger.getLogger(LoginCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UserEditCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(UserEditCommand.class);
+    private final Logger LOGGER = Logger.getLogger(UserEditCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

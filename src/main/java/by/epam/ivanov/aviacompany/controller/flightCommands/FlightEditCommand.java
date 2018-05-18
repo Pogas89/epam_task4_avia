@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class FlightEditCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(FlightEditCommand.class);
+    private final Logger LOGGER = Logger.getLogger(FlightEditCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

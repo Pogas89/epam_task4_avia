@@ -9,17 +9,14 @@ import by.epam.ivanov.aviacompany.controller.staffCommands.StaffDeleteCommand;
 import by.epam.ivanov.aviacompany.controller.staffCommands.StaffEditCommand;
 import by.epam.ivanov.aviacompany.controller.staffCommands.StaffListCommand;
 import by.epam.ivanov.aviacompany.controller.staffCommands.StaffSaveCommand;
-import by.epam.ivanov.aviacompany.controller.userCommands.UserDeleteCommand;
-import by.epam.ivanov.aviacompany.controller.userCommands.UserEditCommand;
-import by.epam.ivanov.aviacompany.controller.userCommands.UserListCommand;
-import by.epam.ivanov.aviacompany.controller.userCommands.UserSaveCommand;
+import by.epam.ivanov.aviacompany.controller.userCommands.*;
 import by.epam.ivanov.aviacompany.util.Commands;
 
 import javax.servlet.ServletException;
 import java.util.HashMap;
 
 class CommandMap {
-    private static HashMap<String, Command> commandMap = new HashMap<>();
+    private static final HashMap<String, Command> commandMap = new HashMap<>();
 
     static {
         commandMap.put(Commands.USERLIST_COMMAND, new UserListCommand());

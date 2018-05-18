@@ -17,7 +17,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class FlightSaveCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(FlightSaveCommand.class);
+    private final Logger LOGGER = Logger.getLogger(FlightSaveCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
-    private Logger LOGGER = Logger.getLogger(MySqlCrewDAO.class);
+    private final Logger LOGGER = Logger.getLogger(MySqlCrewDAO.class);
 
     @Override
     public List<Crew> getCrews() throws DaoException {
@@ -103,14 +103,14 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
     }
 
     @Override
-    public void deleteStaffFromCrew(Integer crewId, Integer staffId){
+    public void deleteStaffFromCrew(Integer crewId, Integer staffId) throws DaoException {
         String sql = "DELETE FROM crew_staff WHERE cr_id=? AND st_id=?;";
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
             statement.setInt(1, crewId);
             statement.setInt(2, staffId);
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DaoException(e);
         }
     }
 

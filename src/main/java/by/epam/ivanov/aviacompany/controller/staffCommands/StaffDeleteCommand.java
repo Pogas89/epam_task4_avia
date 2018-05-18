@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class StaffDeleteCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(StaffDeleteCommand.class);
+    private final Logger LOGGER = Logger.getLogger(StaffDeleteCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

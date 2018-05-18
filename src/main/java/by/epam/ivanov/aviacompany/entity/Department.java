@@ -6,7 +6,7 @@ public enum Department {
     RADIOMAN("department.radioman"),
     ATTENDANT("department.attendant");
 
-    private String name;
+    private final String name;
 
     Department(String name) {
         this.name = name;

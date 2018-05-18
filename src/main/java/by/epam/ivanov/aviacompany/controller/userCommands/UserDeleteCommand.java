@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UserDeleteCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(UserDeleteCommand.class);
+    private final Logger LOGGER = Logger.getLogger(UserDeleteCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

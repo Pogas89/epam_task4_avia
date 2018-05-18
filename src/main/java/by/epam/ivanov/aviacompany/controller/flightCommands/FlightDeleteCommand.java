@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class FlightDeleteCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(FlightDeleteCommand.class);
+    private final Logger LOGGER = Logger.getLogger(FlightDeleteCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

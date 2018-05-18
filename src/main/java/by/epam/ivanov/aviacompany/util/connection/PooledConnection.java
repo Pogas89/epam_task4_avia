@@ -7,10 +7,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-public class PooledConnection implements Connection {
+class PooledConnection implements Connection {
     private Logger LOGGER = Logger.getLogger(PooledConnection.class);
-    private ConnectionPool pool;
-    private Connection connection;
+    private final ConnectionPool pool;
+    private final Connection connection;
 
     public PooledConnection(ConnectionPool pool, Connection connection) {
         this.pool = pool;

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UserSaveCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(UserSaveCommand.class);
+    private final Logger LOGGER = Logger.getLogger(UserSaveCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

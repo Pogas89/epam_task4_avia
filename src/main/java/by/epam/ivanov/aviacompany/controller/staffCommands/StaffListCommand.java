@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class StaffListCommand extends Command {
-    private Logger LOGGER = Logger.getLogger(StaffListCommand.class);
+    private final Logger LOGGER = Logger.getLogger(StaffListCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

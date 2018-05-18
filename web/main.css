@@ -1,17 +1,6 @@
-td.empty {
-    padding: 0;
-}
-
-th, td.content {
-    border: 1px solid black;
-}
 
 th {
     padding: 5px 10px;
-}
-
-td.content {
-    padding: 5px 25px 5px 10px;
 }
 
 form button {
@@ -124,9 +113,3 @@ a.cancel {
     color: black;
 }
 
-.btn-info {
-    background-color: rgba(24, 33, 52, 0.5);
-    color: white;
-    border: none;
-    border-radius: 20%;
-}

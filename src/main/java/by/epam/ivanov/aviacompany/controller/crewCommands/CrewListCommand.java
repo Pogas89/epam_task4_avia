@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class CrewListCommand extends Command {
-    private static Logger LOGGER = Logger.getLogger(CrewListCommand.class);
+    private static final Logger LOGGER = Logger.getLogger(CrewListCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
-    private static Logger LOGGER = Logger.getLogger(MySqlStaffDAO.class);
+    private static final Logger LOGGER = Logger.getLogger(MySqlStaffDAO.class);
 
     private Staff getStafFromDB(ResultSet resultSet) throws DaoException {
         Staff staff;

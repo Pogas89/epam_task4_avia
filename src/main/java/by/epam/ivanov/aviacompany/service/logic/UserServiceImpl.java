@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private static Logger LOGGER = Logger.getLogger(UserServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(UserServiceImpl.class);
     private UserDAO userDAO;
 
     public void setUserDAO(UserDAO userDAO) {

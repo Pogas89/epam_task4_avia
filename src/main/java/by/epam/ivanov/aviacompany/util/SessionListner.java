@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 public class SessionListner implements HttpSessionListener {
-    private Logger LOGGER = Logger.getLogger(SessionListner.class);
+    private final Logger LOGGER = Logger.getLogger(SessionListner.class);
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
         LOGGER.debug("Session created");

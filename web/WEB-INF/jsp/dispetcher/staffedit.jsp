@@ -30,7 +30,7 @@
         <select id="department" name="department">
             <c:forEach var="department" items="${departments}">
                 <option value="${department.id}"
-                    ${department.id == staff.department.id} ? 'selected' :'' ><fmt:message key="${department.name}"/></option>
+                    ${department.id == staff.department.id} ? 'selected' :'' ><fmt:message key="${department.name}"/>
             </c:forEach>
         </select><br>
         <button class="save"><fmt:message key="staffedit.button.save"/></button>

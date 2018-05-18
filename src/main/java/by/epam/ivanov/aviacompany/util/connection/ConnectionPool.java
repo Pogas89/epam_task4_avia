@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class ConnectionPool {
-    private static Logger LOGGER = Logger.getLogger(ConnectionPool.class);
+    private static final Logger LOGGER = Logger.getLogger(ConnectionPool.class);
     private static volatile ConnectionPool instance = null;
     private int maxPool;
     private String url;
