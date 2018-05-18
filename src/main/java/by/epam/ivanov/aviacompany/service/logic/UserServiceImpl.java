@@ -48,6 +48,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> readActualUsers() throws ServiceException {
+        try {
+            return userDAO.getActualUsers();
+        } catch (DaoException e) {
+            LOGGER.error(e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void save(User user) throws ServiceException {
         try {
             if (user.getId()==null) {

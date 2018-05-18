@@ -19,19 +19,7 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
     @Override
     public List<Crew> getCrews() throws DaoException {
         String sql = "SELECT * FROM crew ORDER BY cr_name;";
-        List<Crew> crewList = new ArrayList<>();
-        Crew crew;
-        try (Statement statement = getConnection().createStatement()) {
-            ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-                crew = getCrewFromDB(resultSet);
-                crewList.add(crew);
-            }
-        } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
-            throw new DaoException(e);
-        }
-        return crewList;
+        return getListOfCrew(sql);
     }
 
     @Override
@@ -98,13 +86,8 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
 
     @Override
     public void delete(Integer id) throws DaoException {
-        String sql = "DELETE FROM staff WHERE st_id=?;";
-        try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
+        String sql = "UPDATE crew SET isArchive=1 WHERE cr_id=?;";
+        changeToArchive(sql, id);
     }
 
     @Override
@@ -129,5 +112,27 @@ public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Crew> getActualCrews() throws DaoException {
+        String sql = "SELECT * FROM crew WHERE isArchive=0 ORDER BY cr_name;";
+        return getListOfCrew(sql);
+    }
+
+    private List<Crew> getListOfCrew(String sql) throws DaoException{
+        List<Crew> crewList = new ArrayList<>();
+        Crew crew;
+        try (Statement statement = getConnection().createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                crew = getCrewFromDB(resultSet);
+                crewList.add(crew);
+            }
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+            throw new DaoException(e);
+        }
+        return crewList;
     }
 }

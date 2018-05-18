@@ -21,7 +21,7 @@ public class StaffListCommand extends Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             StaffService staffService = getServiceFactory().getStaffService();
-            List<Staff> staffList = staffService.readStaffs();
+            List<Staff> staffList = staffService.readActualStaffs();
             PagedListHolderImpl<Staff> listHolder = new PagedListHolderImpl<>(staffList);
             listHolder.setAttribut("staffList");
             listHolder.setPadding(request);

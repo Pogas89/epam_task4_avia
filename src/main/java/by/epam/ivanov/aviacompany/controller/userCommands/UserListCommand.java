@@ -21,7 +21,7 @@ public class UserListCommand extends Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try{
             UserService userService = getServiceFactory().getUserService();
-            List<User> userList = userService.readUsers();
+            List<User> userList = userService.readActualUsers();
             PagedListHolderImpl<User> listHolder = new PagedListHolderImpl<>(userList);
             listHolder.setAttribut("userList");
             listHolder.setPadding(request);

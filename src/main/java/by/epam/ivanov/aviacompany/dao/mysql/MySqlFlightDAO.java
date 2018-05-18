@@ -123,18 +123,23 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
 
     @Override
     public void delete(Integer id) throws DaoException {
-        String sql = "DELETE FROM flight WHERE fl_id=?;";
-        try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
+        String sql = "UPDATE flight SET isArchive=1 WHERE fl_id=?;";
+        changeToArchive(sql, id);
     }
 
     @Override
     public List<Flight> readAllFlights() throws DaoException {
         String sql = "SELECT * FROM flight ORDER BY fl_date DESC , fl_time DESC;";
+        return getListOfFlight(sql);
+    }
+
+    @Override
+    public List<Flight> readActualFlights() throws DaoException {
+        String sql = "SELECT * FROM flight WHERE isArchive=0 ORDER BY fl_date DESC , fl_time DESC;";
+        return getListOfFlight(sql);
+    }
+
+    private List<Flight> getListOfFlight(String sql) throws DaoException{
         Flight flight;
         List<Flight> flights = new ArrayList<>();
         try (Statement statement = getConnection().createStatement()) {
@@ -151,7 +156,7 @@ public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
 
     @Override
     public List<Flight> readNewFlights() throws DaoException {
-        String sql = "SELECT * FROM flight WHERE fl_statatus=? ORDER BY fl_date DESC , fl_time DESC;";
+        String sql = "SELECT * FROM flight WHERE isArchive=0 && fl_statatus=? ORDER BY fl_date DESC , fl_time DESC;";
         Flight flight;
         List<Flight> flights = new ArrayList<>();
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {

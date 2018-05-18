@@ -16,11 +16,13 @@ public class Commands {
     public static final String CREWLIST_COMMAND = "/dispetcher/crewlist.html";
     public static final String CREWEDIT_COMMAND = "/dispetcher/crewedit.html";
     public static final String CREWSAVE_COMMAND = "/dispetcher/crewsave.html";
+    public static final String CREWDELETE_COMMAND = "/dispetcher/crewdelete.html";
     public static final String CREWSHOW_COMMAND = "/dispetcher/crewshow.html";
     public static final String ADDSTAFFINCREW_COMMAND = "/dispetcher/addstaffincrew.html";
     public static final String DELSTAFFFROMCREW_COMMAND = "/dispetcher/deletefromcrew.html";
     public static final String FLIGHTLIST_COMMAND = "/flightlist.html";
     public static final String FLIGHTEDIT_COMMAND = "/flightedit.html";
     public static final String FLIGHTSAVE_COMMAND = "/flightsave.html";
+    public static final String FLIGHTDELETE_COMMAND = "/flightdelete.html";
 
 }

@@ -10,6 +10,8 @@ public interface CrewService {
 
     List<Crew> readCrews() throws ServiceException;
 
+    List<Crew> readActualCrews() throws ServiceException;
+
     void save (Crew crew) throws ServiceException;
 
     void delete(Integer id) throws ServiceException;

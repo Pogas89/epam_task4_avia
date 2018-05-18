@@ -9,6 +9,8 @@ public interface FlightService {
 
     List<Flight> readFlights() throws ServiceException;
 
+    List<Flight> readActualFlights() throws ServiceException;
+
     List<Flight> readNewFlights() throws ServiceException;
 
     void save(Flight flight) throws ServiceException;

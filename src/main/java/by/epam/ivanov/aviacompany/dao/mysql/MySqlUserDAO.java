@@ -53,7 +53,7 @@ public class MySqlUserDAO extends MySqlBaseDAO implements UserDAO {
 
     @Override
     public User readByLogin(String login) throws DaoException {
-        String sql = "SELECT * FROM user WHERE us_login =?;";
+        String sql = "SELECT * FROM user WHERE isArchive=0 && us_login =?;";
         User user = null;
         try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
             statement.setString(1, login);
@@ -71,6 +71,16 @@ public class MySqlUserDAO extends MySqlBaseDAO implements UserDAO {
     @Override
     public List<User> getUsers() throws DaoException {
         String sql = "SELECT * FROM user ORDER BY us_login;";
+        return getListOfUsers(sql);
+    }
+
+    @Override
+    public List<User> getActualUsers() throws DaoException {
+        String sql = "SELECT * FROM user WHERE isArchive=0 ORDER BY us_login;";
+        return getListOfUsers(sql);
+    }
+
+    private List<User> getListOfUsers(String sql) throws DaoException {
         List<User> users = new ArrayList<>();
         User user;
         try (Statement statement = getConnection().createStatement()) {
@@ -114,14 +124,8 @@ public class MySqlUserDAO extends MySqlBaseDAO implements UserDAO {
 
     @Override
     public void delete(Integer id) throws DaoException {
-        String sql = "DELETE FROM user WHERE user_id=?;";
-        try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
-            throw new DaoException(e);
-        }
+        String sql = "UPDATE user SET isArchive=1 WHERE user_id=?;";
+        changeToArchive(sql,id);
     }
 
     @Override
@@ -137,6 +141,20 @@ public class MySqlUserDAO extends MySqlBaseDAO implements UserDAO {
             statement.setString(5, entity.getEmail());
             statement.setInt(6, entity.getUserRole().ordinal());
             statement.setInt(7, entity.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+            throw new DaoException(e);
+        }
+    }
+
+    @Override
+    public void changePassword(Integer id, String pass) throws DaoException {
+        String sql = "UPDATE user SET us_password=? WHERE user_id=?;";
+        try (PreparedStatement statement =
+                     getConnection().prepareStatement(sql)) {
+            statement.setString(1, pass);
+            statement.setInt(2, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());

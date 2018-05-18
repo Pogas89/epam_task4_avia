@@ -24,7 +24,7 @@ public class CrewListCommand extends Command {
         try {
             LOGGER.debug("in crew list command");
             CrewService crewService = getServiceFactory().getCrewService();
-            List<Crew> crewList = crewService.readCrews();
+            List<Crew> crewList = crewService.readActualCrews();
             if(!crewList.isEmpty()){
                 UserService userService = getServiceFactory().getUserService();
                 Integer id;

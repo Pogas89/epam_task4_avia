@@ -30,7 +30,7 @@ public class FlightListCommand extends Command {
             FlightService service = getServiceFactory().getFlightService();
             List<Flight> flightList = null;
             if (currentUser.getUserRole()== UserRole.ADMIN) {
-                flightList = service.readFlights();
+                flightList = service.readActualFlights();
             } else if (currentUser.getUserRole()==UserRole.DISPETCHER){
                 flightList = service.readNewFlights();
             }

@@ -11,6 +11,8 @@ public interface UserService {
 
     List<User> readUsers() throws ServiceException;
 
+    List<User> readActualUsers() throws ServiceException;
+
     void save(User user) throws ServiceException;
 
     void delete(Integer id) throws ServiceException;

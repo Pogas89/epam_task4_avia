@@ -8,4 +8,6 @@ public interface FlightDAO extends DAO<Flight> {
     List<Flight> readAllFlights() throws DaoException;
 
     List<Flight> readNewFlights() throws DaoException;
+
+    List<Flight> readActualFlights() throws DaoException;
 }

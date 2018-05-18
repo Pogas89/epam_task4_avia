@@ -48,6 +48,16 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
+    public List<Staff> readActualStaffs() throws ServiceException {
+        try {
+            return staffDAO.getActualStaffs();
+        } catch (DaoException e) {
+            LOGGER.error(e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public List<Staff> readStaffFromCrew(Integer id) throws ServiceException {
         try {
             return staffDAO.getStaffsFromCrew(id);

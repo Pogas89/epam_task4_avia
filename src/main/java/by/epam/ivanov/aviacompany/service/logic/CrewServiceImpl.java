@@ -41,6 +41,15 @@ public class CrewServiceImpl implements CrewService {
     }
 
     @Override
+    public List<Crew> readActualCrews() throws ServiceException {
+        try {
+            return crewDAO.getActualCrews();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void save(Crew crew) throws ServiceException {
         try{
             if(crew.getId()!=null){

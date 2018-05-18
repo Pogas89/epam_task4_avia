@@ -70,6 +70,10 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
     @Override
     public List<Staff> getStaffs() throws DaoException {
         String sql = "SELECT * FROM staff ORDER BY st_Lname, st_Fname;";
+        return getListOfStaff(sql);
+    }
+
+    private List<Staff> getListOfStaff(String sql) throws DaoException {
         List<Staff> staffList = new ArrayList<>();
         Staff staff;
         try (Statement statement = getConnection().createStatement()) {
@@ -83,6 +87,12 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
             throw new DaoException(e);
         }
         return staffList;
+    }
+
+    @Override
+    public List<Staff> getActualStaffs() throws DaoException {
+        String sql = "SELECT * FROM staff WHERE isArchive=0 ORDER BY st_Lname, st_Fname;";
+        return getListOfStaff(sql);
     }
 
     @Override
@@ -110,16 +120,8 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
 
     @Override
     public void delete(Integer id) throws DaoException {
-        String sql = "DELETE FROM staff WHERE st_id=?;";
-        try (PreparedStatement preparedStatement =
-                     getConnection().prepareStatement(sql)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
-            throw new DaoException(e);
-        }
-
+        String sql = "UPDATE staff SET isArchive=1 WHERE st_id=?;";
+        changeToArchive(sql,id);
     }
 
     @Override
@@ -144,11 +146,11 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
                 "WHERE crew.cr_id =? AND crew.cr_id=crew_staff.cr_id AND staff.st_id = crew_staff.st_id;";
         List<Staff> staffList = new ArrayList<>();
         Staff staff;
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)){
-            preparedStatement.setInt(1,cr_id);
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+            preparedStatement.setInt(1, cr_id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                staff=getStafFromDB(resultSet);
+            while (resultSet.next()) {
+                staff = getStafFromDB(resultSet);
                 staffList.add(staff);
             }
             return staffList;
@@ -159,7 +161,7 @@ public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
 
     @Override
     public List<Staff> getFreeStaffs() throws DaoException {
-        String sql = "SELECT staff.* FROM staff WHERE st_id NOT IN (SELECT crew_staff.st_id FROM crew_staff) ORDER BY st_Lname,st_Fname;";
+        String sql = "SELECT staff.* FROM staff WHERE isArchive=0 && st_id NOT IN (SELECT crew_staff.st_id FROM crew_staff) ORDER BY st_Lname,st_Fname;";
         List<Staff> freeStaff = new ArrayList<>();
         Staff staff;
         try (Statement statement = getConnection().createStatement()) {
