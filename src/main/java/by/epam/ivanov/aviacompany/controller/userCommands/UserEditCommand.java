@@ -20,6 +20,9 @@ public class UserEditCommand extends Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         LOGGER.debug("userEdit command start");
         Integer id = null;
+        String url = request.getParameter("url");
+        LOGGER.debug("url from request " + url);
+        request.setAttribute("url", url);
         try {
             id = Integer.parseInt(request.getParameter("id"));
             LOGGER.debug("id=" + id);

@@ -32,7 +32,8 @@ public class StaffSaveCommand extends Command {
             LOGGER.error(e.getMessage());
             throw new ServletException(e);
         }
-        if (staff.getLastName() != null) {
+        if (staff.getLastName() != null && staff.getFirstName() != null
+                && staff.getDepartment() != null) {
             try {
                 StaffService staffService = getServiceFactory().getStaffService();
                 staffService.save(staff);

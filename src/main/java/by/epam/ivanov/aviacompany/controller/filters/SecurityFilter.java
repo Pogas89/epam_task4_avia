@@ -25,8 +25,8 @@ public class SecurityFilter implements Filter {
         dispetcher.add(UserRole.DISPETCHER);
 
         permits.put(Commands.USERLIST_COMMAND, admin);
-        permits.put(Commands.USEREDIT_COMMAND, admin);
-        permits.put(Commands.USERSAVE_COMMAND, admin);
+        permits.put(Commands.USEREDIT_COMMAND, all);
+        permits.put(Commands.USERSAVE_COMMAND, all);
         permits.put(Commands.USERDELETE_COMMAND, admin);
         permits.put(Commands.STAFFLIST_COMMAND, dispetcher);
         permits.put(Commands.STAFFEDIT_COMMAND,dispetcher);

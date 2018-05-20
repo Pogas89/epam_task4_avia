@@ -21,6 +21,8 @@ public class Controller extends HttpServlet {
     private void procces(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.debug("Controller starts");
         String url = req.getRequestURI();
+        String contex = req.getContextPath();
+        url = url.substring(contex.length());
         Command command = CommandMap.getCommand(url);
         LOGGER.debug("Controller has command " + url);
 

@@ -19,8 +19,8 @@ public class AddStaffInCrewCommand extends Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         LOGGER.debug("CrewId=" + request.getParameter("crewId"));
         LOGGER.debug("StaffId=" + request.getParameter("staffId"));
-        Integer crewId = null;
-        Integer staffId = null;
+        Integer crewId;
+        Integer staffId;
         try {
             crewId = Integer.parseInt(request.getParameter("crewId"));
             staffId = Integer.parseInt(request.getParameter("staffId"));

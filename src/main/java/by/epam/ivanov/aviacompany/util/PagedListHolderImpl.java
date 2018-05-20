@@ -71,6 +71,8 @@ public class PagedListHolderImpl<T> {
         }
         request.setAttribute("maxPages" , getNumberOfPages());
         String url = request.getRequestURI();
+        String contex = request.getContextPath();
+        url = url.substring(contex.length());
         request.setAttribute("currentPage", url);
         if (page < 1 || page > getNumberOfPages())
             page = 1;
