@@ -7,6 +7,7 @@ import by.epam.ivanov.aviacompany.service.ServiceException;
 import by.epam.ivanov.aviacompany.service.UserService;
 import by.epam.ivanov.aviacompany.util.Commands;
 import by.epam.ivanov.aviacompany.util.Pages;
+import by.epam.ivanov.aviacompany.util.PasswordToHash;
 import by.epam.ivanov.aviacompany.util.serviceFactory.ServiceFactoryException;
 import org.apache.log4j.Logger;
 
@@ -33,7 +34,11 @@ public class UserSaveCommand extends Command {
         }
         LOGGER.debug("url from request " + url);
         user.setLogin(request.getParameter("login"));
-        user.setPassword(request.getParameter("password"));
+        String password = request.getParameter("password");
+        if (password != null) {
+            password = PasswordToHash.getHashSha256(password);
+            user.setPassword(password);
+        }
         user.setFirstName(request.getParameter("firstName"));
         user.setLastName(request.getParameter("lastName"));
         user.setEmail(request.getParameter("email"));

@@ -1,5 +1,8 @@
 package by.epam.ivanov.aviacompany.entity;
 
+/**
+ * JavaBean class of User entity
+ */
 public class User extends Entity {
     private String login;
     private String password;

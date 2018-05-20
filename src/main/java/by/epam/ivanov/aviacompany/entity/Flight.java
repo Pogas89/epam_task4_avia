@@ -3,6 +3,9 @@ package by.epam.ivanov.aviacompany.entity;
 import java.sql.Date;
 import java.sql.Time;
 
+/**
+ * JavaBean class of Flight entity
+ */
 public class Flight extends Entity {
     private String name;
     private String departure;

@@ -12,7 +12,6 @@ import by.epam.ivanov.aviacompany.controller.staffCommands.StaffSaveCommand;
 import by.epam.ivanov.aviacompany.controller.userCommands.*;
 import by.epam.ivanov.aviacompany.util.Commands;
 
-import javax.servlet.ServletException;
 import java.util.HashMap;
 
 class CommandMap {
@@ -42,11 +41,9 @@ class CommandMap {
         commandMap.put(Commands.FLIGHTEDIT_COMMAND, new FlightEditCommand());
         commandMap.put(Commands.FLIGHTSAVE_COMMAND, new FlightSaveCommand());
         commandMap.put(Commands.FLIGHTDELETE_COMMAND, new FlightDeleteCommand());
-
-        //todo: дописать остальные команды
     }
 
-    static Command getCommand(String name) throws ServletException{
+    static Command getCommand(String name){
         if (name != null || commandMap.containsKey(name))
             return commandMap.get(name);
         return null;

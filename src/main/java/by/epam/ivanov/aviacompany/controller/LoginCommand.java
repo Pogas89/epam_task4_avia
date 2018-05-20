@@ -5,6 +5,7 @@ import by.epam.ivanov.aviacompany.entity.UserRole;
 import by.epam.ivanov.aviacompany.service.ServiceException;
 import by.epam.ivanov.aviacompany.service.UserService;
 import by.epam.ivanov.aviacompany.util.Pages;
+import by.epam.ivanov.aviacompany.util.PasswordToHash;
 import by.epam.ivanov.aviacompany.util.serviceFactory.ServiceFactoryException;
 import org.apache.log4j.Logger;
 
@@ -21,6 +22,7 @@ public class LoginCommand extends Command {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         if (login != null && password != null) {
+            password = PasswordToHash.getHashSha256(password);
             try {
                 UserService userService = getServiceFactory().getUserService();
                 User user = userService.readByLogin(login);

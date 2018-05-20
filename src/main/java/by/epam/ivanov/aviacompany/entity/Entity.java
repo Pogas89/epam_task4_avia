@@ -2,6 +2,9 @@ package by.epam.ivanov.aviacompany.entity;
 
 import java.io.Serializable;
 
+/**
+ * Base class for all entity
+ */
 public class Entity implements Serializable {
     private Integer id;
 

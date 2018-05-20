@@ -1,5 +1,8 @@
 package by.epam.ivanov.aviacompany.entity;
 
+/**
+ * JavaBean class of Crew entity
+ */
 public class Crew extends Entity {
     private String name;
     private User user;

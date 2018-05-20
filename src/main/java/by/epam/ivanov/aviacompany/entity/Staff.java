@@ -1,5 +1,8 @@
 package by.epam.ivanov.aviacompany.entity;
 
+/**
+ * JavaBean class of Staff entity
+ */
 public class Staff extends Entity {
     private String firstName;
     private String lastName;

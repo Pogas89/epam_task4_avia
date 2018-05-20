@@ -29,5 +29,6 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.26" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-annotations-api:9.0.6" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.4" level="project" />
   </component>
 </module>

@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `aviacompany`.`staff` (
 CREATE TABLE IF NOT EXISTS `aviacompany`.`user` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `us_login` VARCHAR(30) NOT NULL,
-  `us_password` VARCHAR(30) NOT NULL,
+  `us_password` VARCHAR(100) NOT NULL,
   `us_Fname` VARCHAR(45) NOT NULL,
   `us_Lname` VARCHAR(45) NOT NULL,
   `us_email` VARCHAR(20) NOT NULL,
