@@ -73,6 +73,13 @@ a.cancel {
     background: url('cancel.png');
 }
 
+a.defPassword {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('password.png');
+}
+
 #menu{
     width: 100%;
     background-color: aqua;

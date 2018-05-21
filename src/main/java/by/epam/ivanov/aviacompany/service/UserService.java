@@ -16,4 +16,6 @@ public interface UserService {
     void save(User user) throws ServiceException;
 
     void delete(Integer id) throws ServiceException;
+
+    void savePassword(Integer id, String pass) throws ServiceException;
 }

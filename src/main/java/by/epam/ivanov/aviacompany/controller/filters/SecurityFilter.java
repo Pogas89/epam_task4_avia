@@ -25,8 +25,8 @@ public class SecurityFilter implements Filter {
         dispetcher.add(UserRole.DISPETCHER);
 
         permits.put(Commands.USERLIST_COMMAND, admin);
-        permits.put(Commands.USEREDIT_COMMAND, all);
-        permits.put(Commands.USERSAVE_COMMAND, all);
+        permits.put(Commands.USEREDIT_COMMAND, admin);
+        permits.put(Commands.USERSAVE_COMMAND, admin);
         permits.put(Commands.USERDELETE_COMMAND, admin);
         permits.put(Commands.STAFFLIST_COMMAND, dispetcher);
         permits.put(Commands.STAFFEDIT_COMMAND,dispetcher);
@@ -42,6 +42,9 @@ public class SecurityFilter implements Filter {
         permits.put(Commands.FLIGHTLIST_COMMAND, all);
         permits.put(Commands.FLIGHTEDIT_COMMAND, all);
         permits.put(Commands.FLIGHTSAVE_COMMAND, all);
+        permits.put(Commands.USEREDITPASS_COMMAND, all);
+        permits.put(Commands.USERSAVEPASS_COMMAND, all);
+        permits.put(Commands.USERSETDEFPASS_COMMAND, admin);
     }
 
     @Override

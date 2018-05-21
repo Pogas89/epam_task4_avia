@@ -20,6 +20,9 @@ class CommandMap {
     static {
         commandMap.put(Commands.USERLIST_COMMAND, new UserListCommand());
         commandMap.put(Commands.USEREDIT_COMMAND, new UserEditCommand());
+        commandMap.put(Commands.USEREDITPASS_COMMAND, new UserEditPassword());
+        commandMap.put(Commands.USERSAVEPASS_COMMAND, new UserSavePassword());
+        commandMap.put(Commands.USERSETDEFPASS_COMMAND, new UserSetDefaultPassword());
         commandMap.put(Commands.USERSAVE_COMMAND, new UserSaveCommand());
         commandMap.put(Commands.USERDELETE_COMMAND, new UserDeleteCommand());
         commandMap.put(Commands.STAFFLIST_COMMAND, new StaffListCommand());

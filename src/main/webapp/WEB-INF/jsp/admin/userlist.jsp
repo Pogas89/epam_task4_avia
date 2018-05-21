@@ -21,6 +21,7 @@
             <th><fmt:message key="userlist.table.userrole"/></th>
             <th><fmt:message key="userlist.button.edit"/></th>
             <th><fmt:message key="userlist.button.delete"/></th>
+            <th><fmt:message key="userlist.button.setdefpass"/></th>
         </tr>
         <%--@elvariable id="userList" type="java.util.List"--%>
         <c:forEach var="user" items="${userList}">
@@ -41,6 +42,12 @@
                         <c:param name="id" value="${user.id}"/>
                     </c:url>
                     <a href="${userDelete}" class="delete"></a>
+                </td>
+                <td>
+                    <c:url var="setDefaultPass" value="/admin/userpassworddefault.html">
+                        <c:param name="id" value="${user.id}"/>
+                    </c:url>
+                    <a href="${setDefaultPass}" class="defPassword"></a>
                 </td>
             </tr>
         </c:forEach>

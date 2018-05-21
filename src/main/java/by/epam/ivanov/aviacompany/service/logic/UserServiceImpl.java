@@ -82,4 +82,14 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    @Override
+    public void savePassword(Integer id, String pass) throws ServiceException {
+        try {
+            userDAO.changePassword(id, pass);
+        } catch (DaoException e) {
+            LOGGER.error(e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
 }

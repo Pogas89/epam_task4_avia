@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The implementation of UserDAO to db of MySql Type
+ * The implementation of StaffDAO to db of MySql Type
  *
  * @see UserDAO
  */
@@ -135,17 +135,16 @@ public class MySqlUserDAO extends MySqlBaseDAO implements UserDAO {
 
     @Override
     public void update(User entity) throws DaoException {
-        String sql = "UPDATE user SET us_login=?, us_password=?, us_Fname=?, " +
+        String sql = "UPDATE user SET us_login=?, us_Fname=?, " +
                 "us_Lname=?, us_email=?, us_role=? WHERE user_id=?;";
         try (PreparedStatement statement =
                      getConnection().prepareStatement(sql)) {
             statement.setString(1, entity.getLogin());
-            statement.setString(2, entity.getPassword());
-            statement.setString(3, entity.getFirstName());
-            statement.setString(4, entity.getLastName());
-            statement.setString(5, entity.getEmail());
-            statement.setInt(6, entity.getUserRole().ordinal());
-            statement.setInt(7, entity.getId());
+            statement.setString(2, entity.getFirstName());
+            statement.setString(3, entity.getLastName());
+            statement.setString(4, entity.getEmail());
+            statement.setInt(5, entity.getUserRole().ordinal());
+            statement.setInt(6, entity.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());

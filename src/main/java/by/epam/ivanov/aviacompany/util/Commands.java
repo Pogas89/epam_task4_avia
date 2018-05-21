@@ -5,6 +5,9 @@ public class Commands {
     public static final String USERSAVE_COMMAND = "/admin/usersave.html";
     public static final String USEREDIT_COMMAND = "/admin/useredit.html";
     public static final String USERDELETE_COMMAND = "/admin/userdelete.html";
+    public static final String USEREDITPASS_COMMAND = "/userpasswordedit.html";
+    public static final String USERSAVEPASS_COMMAND = "/userpasswordsave.html";
+    public static final String USERSETDEFPASS_COMMAND = "/admin/userpassworddefault.html";
     public static final String STAFFLIST_COMMAND = "/dispetcher/stafflist.html";
     public static final String STAFFSAVE_COMMAND = "/dispetcher/staffsave.html";
     public static final String STAFFEDIT_COMMAND = "/dispetcher/staffedit.html";

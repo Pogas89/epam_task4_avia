@@ -18,53 +18,31 @@
     <c:url var="UserList" value="/admin/userlist.html"/>
     <c:url var="UserSave" value="/admin/usersave.html"/>
     <form action="${UserSave}" method="post">
-            <%--@elvariable id="url" type="java.lang.String"--%>
-        <c:if test="${not empty url}">
-            <input name="url" value="${url}" type="hidden">
-        </c:if>
         <c:if test="${not empty user.id}">
             <input name="id" value="${user.id}" type="hidden">
         </c:if>
-        <c:choose>
-            <c:when test="${empty url}">
-                <c:if test="${sessionScope.currentUser.userRole.id==0}">
-                <label for="${user.login}"><fmt:message key="useredit.form.login"/></label>
-                <input type="text" name="login" id="${user.login}" value="${user.login}" required><br>
-                </c:if>
-            </c:when>
-            <c:when test="${not empty url}">
-                <input name="login" id="${user.login}" value="${user.login}" hidden>
-            </c:when>
-        </c:choose>
-        <label for="${user.password}"><fmt:message key="useredit.form.password"/></label>
-        <input type="password" name="password" id="${user.password}" value="${user.password}" required><br>
+        <label for="${user.login}"><fmt:message key="useredit.form.login"/></label>
+        <input type="text" name="login" id="${user.login}" value="${user.login}" required><br>
+        <c:if test="${empty user.id}">
+            <label for="${user.password}"><fmt:message key="useredit.form.password"/></label>
+            <input type="password" name="password" id="${user.password}" value="${user.password}" required><br>
+        </c:if>
         <label for="${user.firstName}"><fmt:message key="useredit.form.firstname"/></label>
         <input type="text" name="firstName" id="${user.firstName}" value="${user.firstName}" required><br>
         <label for="${user.lastName}"><fmt:message key="useredit.form.lastname"/></label>
         <input type="text" name="lastName" id="${user.lastName}" value="${user.lastName}" required><br>
         <label for="${user.email}"><fmt:message key="useredit.form.email"/></label>
         <input type="email" name="email" id="${user.email}" value=" ${user.email}" required><br>
-        <c:choose>
-            <c:when test="${empty url}">
-                <c:if test="${sessionScope.currentUser.userRole.id==0}">
-                    <label for="userRole"><fmt:message key="useredit.form.userrole"/></label>
-                    <select id="userRole" name="userRole">
-                        <c:forEach var="userRole" items="${userRoles}">
-                            <option value="${userRole.id}" ${userRole.id == user.userRole.id ?
-                                    'selected' :''}><fmt:message key="${userRole.name}"/></option>
-                        </c:forEach>
-                    </select><br>
-                </c:if>
-            </c:when>
-            <c:when test="${not empty url}">
-                <input name="userRole" id="userRole" value="${sessionScope.currentUser.userRole.id}" hidden>
-            </c:when>
-        </c:choose>
+        <label for="userRole"><fmt:message key="useredit.form.userrole"/></label>
+        <select id="userRole" name="userRole">
+            <c:forEach var="userRole" items="${userRoles}">
+                <option value="${userRole.id}" ${userRole.id == user.userRole.id ?
+                        'selected' :''}><fmt:message key="${userRole.name}"/></option>
+            </c:forEach>
+        </select><br>
         <button class="save"><fmt:message key="useredit.button.save"/></button>
-        <c:if test="${empty url}">
-            <button class="cancel" formnovalidate formaction="${UserList}" formmethod="post">
-                <fmt:message key="useredit.button.cancel"/>
-            </button>
-        </c:if>
+        <button class="cancel" formnovalidate formaction="${UserList}" formmethod="post">
+            <fmt:message key="useredit.button.cancel"/>
+        </button>
     </form>
 </u:tags>

@@ -17,9 +17,8 @@
 <c:url var="staffList" value="/dispetcher/stafflist.html"/>
 <c:url var="crewList" value="/dispetcher/crewlist.html"/>
 <c:url var="logout" value="/logout.html"/>
-<c:url var="changeUserData" value="/admin/useredit.html">
+<c:url var="changeUserData" value="/userpasswordedit.html">
     <c:param name="id" value="${currentUser.id}"/>
-    <c:param name="url" value="${currentUser.userRole.ordinal()}"/>
 </c:url>
 
 <%--@elvariable id="currentUser" type="by.epam.ivanov.aviacompany.entity.User"--%>
