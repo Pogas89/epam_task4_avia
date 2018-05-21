@@ -44,7 +44,7 @@
         <select id="staffId" name="staffId">
             <c:forEach var="staff" items="${freeStaff}">
                 <option value="${staff.id}">
-                        ${staff.firstName} ${staff.lastName} <fmt:message key="${staff.department.name}"/>
+                        ${staff.lastName} ${staff.firstName} <fmt:message key="${staff.department.name}"/>
                 </option>
             </c:forEach>
         </select><br>

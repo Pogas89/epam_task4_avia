@@ -13,7 +13,7 @@
 <c:if test="${empty staff}">
     <jsp:useBean id="staff" class="by.epam.ivanov.aviacompany.entity.Staff"/>
 </c:if>
-<fmt:message  var="title" key="${not empty staff.id?'staffedit.title.add':'staffedit.title.edit'}"/>
+<fmt:message var="title" key="${not empty staff.id?'staffedit.title.add':'staffedit.title.edit'}"/>
 <u:tags title="${title}">
     <c:url var="StaffList" value="/dispetcher/stafflist.html"/>
     <c:url var="StaffSave" value="/dispetcher/staffsave.html"/>
@@ -28,9 +28,10 @@
         <label for="department"><fmt:message key="staffedit.form.department"/></label>
         <select id="department" name="department">
             <c:forEach var="department" items="${departments}">
-                <option value="${department.id}"
-                    ${department.id == staff.department.id} ? 'selected' :'' ><fmt:message key="${department.name}"/>
-            </c:forEach>
+            <option value="${department.id}"
+                ${department.id == staff.department.id  ? 'selected' :'' }>
+                    <fmt:message key="${department.name}"/>
+                </c:forEach>
         </select><br>
         <button class="save"><fmt:message key="staffedit.button.save"/></button>
         <button class="cancel" formnovalidate formaction="${StaffList}" formmethod="post">
