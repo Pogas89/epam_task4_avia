@@ -35,8 +35,10 @@ CREATE TABLE IF NOT EXISTS `aviacompany`.`user` (
   UNIQUE INDEX `login_UNIQUE` (`us_login` ASC))
   ENGINE = InnoDB;
 
-insert into `aviacompany`.`user` (us_login, us_password, us_Fname, us_Lname, us_email, us_role) values('admin', 'admin', 'Dmitry', 'Ivanov','pogas89@gmail.com',0);
-insert into `aviacompany`.`user` (us_login, us_password, us_Fname, us_Lname, us_email, us_role) values('user1', '1111', 'Ostap', 'Bender','bender@gmail.com',1);
+insert into `aviacompany`.`user` (us_login, us_password, us_Fname, us_Lname, us_email, us_role) values
+  ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Dmitry', 'Ivanov','poshta@gmail.com',0);
+insert into `aviacompany`.`user` (us_login, us_password, us_Fname, us_Lname, us_email, us_role) values
+  ('user1', '0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac5a150c', 'Ostap', 'Bender','bender@gmail.com',1);
 
 -- -----------------------------------------------------
 -- Table `aviacompany`.`crew`

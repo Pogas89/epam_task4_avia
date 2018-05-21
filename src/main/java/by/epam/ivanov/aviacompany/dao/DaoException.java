@@ -1,5 +1,8 @@
 package by.epam.ivanov.aviacompany.dao;
 
+/**
+ * Exception that can be throut by all DAO methods
+ */
 public class DaoException extends Exception {
     public DaoException() {
         super();

@@ -13,6 +13,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The implementation of StaffDAO to db of MySql Type
+ *
+ * @see StaffDAO
+ */
 public class MySqlStaffDAO extends MySqlBaseDAO implements StaffDAO {
     private static final Logger LOGGER = Logger.getLogger(MySqlStaffDAO.class);
 

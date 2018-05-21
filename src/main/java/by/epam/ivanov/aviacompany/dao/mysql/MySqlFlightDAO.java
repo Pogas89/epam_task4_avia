@@ -16,6 +16,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ * The implementation of FlightDao to db of MySql Type
+ *
+ * @see FlightDAO
+ */
 public class MySqlFlightDAO extends MySqlBaseDAO implements FlightDAO {
     private final Logger LOGGER = Logger.getLogger(MySqlFlightDAO.class);
 

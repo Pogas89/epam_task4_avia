@@ -13,6 +13,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The implementation of CrewDao to db of MySql Type
+ *
+ * @see CrewDAO
+ */
 public class MySqlCrewDAO extends MySqlBaseDAO implements CrewDAO {
     private final Logger LOGGER = Logger.getLogger(MySqlCrewDAO.class);
 

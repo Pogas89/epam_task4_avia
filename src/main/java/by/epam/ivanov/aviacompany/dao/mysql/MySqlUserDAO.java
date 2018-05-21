@@ -13,6 +13,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The implementation of UserDAO to db of MySql Type
+ *
+ * @see UserDAO
+ */
 public class MySqlUserDAO extends MySqlBaseDAO implements UserDAO {
     private static final Logger LOGGER = Logger.getLogger(MySqlUserDAO.class);
 
