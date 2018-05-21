@@ -1,6 +1,17 @@
+table {
+    border-collapse: collapse;
+    border: 3px solid #9bafff;
+    text-align: center;
+}
 
 th {
-    padding: 5px 10px;
+    padding: 5px;
+    border: 3px solid #9bafff;
+}
+
+td {
+    padding: 5px;
+    border: 3px solid #9bafff;
 }
 
 form button {
@@ -34,7 +45,8 @@ form button.show {
     background: url('show.png') no-repeat;
 }
 
-form button.login{
+form button.login {
+    width: 400px;
     padding: 0 32px 0 32px;
 }
 
@@ -80,19 +92,26 @@ a.defPassword {
     background: url('password.png');
 }
 
-#menu{
+p.error {
+    color: red;
+    font-size: 25px;
+    text-align: center;
+    border: 3px solid red;
+}
+
+#menu {
     width: 100%;
     background-color: aqua;
     color: white;
     font-size: 18px;
 }
 
-#menu li{
+#menu li {
     display: inline-block;
     color: black;
 }
 
-#menu a:link, #menu a:visited{
+#menu a:link, #menu a:visited {
     color: #000000;
     text-decoration: none;
     display: block;
@@ -102,21 +121,26 @@ a.defPassword {
     font-size: 18px;
 }
 
-#menu a:hover{
+#menu a:hover {
     color: #000000;
     text-decoration: none;
     background-color: aquamarine;
 }
 
-#menu ul{
+#menu ul {
     margin-left: 18px;
     padding: 0;
 }
-
 
 .pagin {
     margin-left: 100px;
     margin-bottom: 5px;
     color: black;
 }
+
+#text {
+    text-align: center;
+    border: 1px solid black;
+}
+
 

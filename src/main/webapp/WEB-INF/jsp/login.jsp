@@ -18,17 +18,17 @@
     <link href="${css}" rel="stylesheet">
 </head>
 <body>
-<h1><fmt:message key="app.title"/></h1>
-<h2>${title}</h2>
+<h1 id="text"><fmt:message key="app.title"/></h1>
+<h2 id="text">${title}</h2>
 <c:if test="${not empty param.message}">
-    <p><fmt:message key="${param.message}"/></p>
+    <p class="error"><fmt:message key="${param.message}"/></p>
 </c:if>
 <c:url var="login" value="/login.html"/>
 <form action="${login}" method="post">
     <label for="login"><fmt:message key="login.form.login"/>:</label>
     <input id="login" name="login" required>
     <label for="password"><fmt:message key="login.form.password"/>:</label>
-    <input id="password" name="password" type="password" required>
+    <input id="password" name="password" type="password" required><br>
     <button class="login"><fmt:message key="login.button.login"/></button>
 </form>
 </body>

@@ -73,7 +73,7 @@
         </div>
     </c:when>
 </c:choose>
-<h2>${title}</h2>
+<h2 id="text">${title}</h2>
 <jsp:doBody/>
 </body>
 </html>
