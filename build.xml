@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="avia" default = "compile">
+<project name="avia" default = "build.war">
 
     <property environment="env"/>
 
@@ -17,6 +17,8 @@
 
     <property name="dir.webapp" value="src/main/webapp"/>
 
+    <property name="dir.resources" value="src/main/resources"/>
+
     <property name="name.apl" value="avia"/>
 
     <property name="file.jar" value="${dir.dst}/${name.apl}.jar"/>
@@ -31,6 +33,7 @@
         <path location="${dir.lib}/mysql-connector-java-5.1.26.jar"/>
         <path location="${dir.lib}/commons-codec-1.4.jar"/>
         <path location="${dir.lib}/tomcat-embed-core-9.0.6.jar"/>
+        <path location="${dir.lib}/tomcat-annotations-api-9.0.6.jar"/>
     </path>
 
     <target name="mkdir">
@@ -67,6 +70,10 @@
         </copy>
 
         <copy todir="${dir.war.content}/WEB-INF/lib" preservelastmodified="true" file="${file.jar}">
+        </copy>
+
+        <copy todir="${dir.war.content}/WEB-INF/classes" preservelastmodified="true">
+            <fileset dir="${dir.resources}" includes="*.properties"/>
         </copy>
     </target>
 
